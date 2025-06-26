@@ -1,0 +1,77 @@
+class_name Ingredient
+extends Sprite2D
+
+@onready var area: Area2D = $Area2D
+@onready var input_blocker: Control = $Control
+
+@export var type : String
+
+var dragging = false
+var drag_offset = Vector2.ZERO
+var in_trash = false
+var locked = false
+
+
+func _ready() -> void:
+	#area.connect("input_event", Callable(self, "_on_area_input_event"))
+	
+	dragging = true
+	drag_offset = get_global_mouse_position() - global_position
+	raise_to_top()
+	
+	# Set as current selection in the root node
+	FoodTruck.current_selection = self
+
+func _process(_delta: float) -> void:
+	if dragging and !locked:
+		global_position = get_global_mouse_position() - drag_offset
+	
+	if !Input.is_action_pressed("click"):
+		dragging = false
+	
+	if in_trash and !dragging:
+		delete()
+
+func _on_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		dragging = true
+		drag_offset = get_global_mouse_position() - global_position
+		
+		FoodTruck.current_selection = self # Set as current selection when clicked
+		if !locked: # Move to top layer only if unlocked
+			raise_to_top() 
+		
+		input_blocker.accept_event() 
+		# Only seems to stop from interacting with other ingredients, not the containers...
+
+func on_click():
+	dragging = true
+	drag_offset = get_global_mouse_position() - global_position
+	
+	FoodTruck.current_selection = self # Set as current selection when clicked
+	if !locked: # Move to top layer only if unlocked
+		raise_to_top() 
+
+func raise_to_top():
+	var parent = get_parent()
+	if parent == null:
+		return
+	
+	var highest_z = -INF
+	for child in parent.get_children():
+		if child is Node2D and child != self:
+			if child.has_method("get_z_index"):  # Safely check z_index
+				highest_z = max(highest_z, child.z_index)
+	
+	var new_z = highest_z + 1
+	z_index = new_z  # Raise self
+	
+	# Also raise the control and/or area2D if they exist
+	if has_node("Control"):
+		get_node("Control").z_index = new_z
+	if has_node("Area2D"):
+		get_node("Area2D").z_index = new_z
+
+func delete():
+	queue_free()
+	FoodTruck.current_selection = null

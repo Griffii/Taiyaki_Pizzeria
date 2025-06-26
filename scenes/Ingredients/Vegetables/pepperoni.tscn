@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwy4x1frrpl4a"]
+
+[ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_5nkga"]
+[ext_resource type="Texture2D" uid="uid://dk56t3o1ec41h" path="res://assets/images/ingredients/Pepperoni.png" id="2_6h4c6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h4c6"]
+size = Vector2(158.667, 156)
+
+[node name="Pepperoni" type="Sprite2D" groups=["ingredients"]]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_6h4c6")
+script = ExtResource("2_5nkga")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -179.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.666664, -0.666668)
+shape = SubResource("RectangleShape2D_6h4c6")

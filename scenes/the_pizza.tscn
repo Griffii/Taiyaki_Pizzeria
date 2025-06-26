@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://7216s2y5bahb"]
+
+[ext_resource type="Texture2D" uid="uid://bs0byo2fjtyiq" path="res://assets/images/items/Pizza 01.png" id="1_odu6l"]
+
+[node name="The Pizza" type="Node2D"]
+
+[node name="PizzaSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_odu6l")
+
+[node name="PizzaArea" type="Area2D" parent="."]
+
+[node name="PizzaAreaCollision" type="CollisionPolygon2D" parent="PizzaArea"]
+position = Vector2(4, -42)
+rotation = 1.5708
+polygon = PackedVector2Array(-287, 5.00104, -272, -125.999, -226.001, -265.999, -142.001, -370.999, -52.0015, -422, 45.9985, -421, 134.999, -380, 227.999, -269.001, 280, -126.001, 291, 5.99895, 274.001, 154.999, 217.001, 295.999, 116.001, 402, -6.99843, 434, -109.999, 400, -192.999, 326.001, -257.999, 193.001)

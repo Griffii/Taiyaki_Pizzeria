@@ -1,0 +1,207 @@
+[gd_scene load_steps=27 format=3 uid="uid://bxbwm4jh5rsiw"]
+
+[ext_resource type="PackedScene" uid="uid://7216s2y5bahb" path="res://scenes/the_pizza.tscn" id="1_4gpfc"]
+[ext_resource type="Script" uid="uid://i7i1fn3fcrm0" path="res://scripts/camera.gd" id="1_4p834"]
+[ext_resource type="Texture2D" uid="uid://br73ot782jql" path="res://assets/images/backgrounds/The Pizza Truck Interior 01.png" id="1_fi7kp"]
+[ext_resource type="Script" uid="uid://bd655itbhe0e6" path="res://scripts/main_scene.gd" id="1_fo2rx"]
+[ext_resource type="Texture2D" uid="uid://ddtm8tf62tien" path="res://assets/images/backgrounds/Background 01.png" id="2_hy7pg"]
+[ext_resource type="PackedScene" uid="uid://x3incmtxdthy" path="res://scenes/shutter_menu.tscn" id="3_1vidy"]
+[ext_resource type="Script" uid="uid://dwidoctgdr0q1" path="res://scripts/ui_layer.gd" id="3_fo2rx"]
+[ext_resource type="Texture2D" uid="uid://du386tomflrpv" path="res://assets/images/customers/Customer01.png" id="3_v0ew2"]
+[ext_resource type="PackedScene" uid="uid://clqvwrtfn4vpr" path="res://scenes/Vegetable Containers/greenpepper_container.tscn" id="6_dkdes"]
+[ext_resource type="Texture2D" uid="uid://m5n6k28i51ol" path="res://assets/images/items/receipt01.png" id="6_ox48p"]
+[ext_resource type="PackedScene" uid="uid://d06rng6m76ih4" path="res://scenes/Vegetable Containers/onion_container.tscn" id="6_tcblg"]
+[ext_resource type="PackedScene" uid="uid://bb1qnkosuqaer" path="res://scenes/Vegetable Containers/tomato_container.tscn" id="7_onmcy"]
+[ext_resource type="Texture2D" uid="uid://c1uychkufq75r" path="res://assets/logos/Game Logo 03.png" id="7_tcblg"]
+[ext_resource type="PackedScene" uid="uid://cxavqtqf8yyxg" path="res://scenes/Vegetable Containers/mushroom_container.tscn" id="8_dkdes"]
+[ext_resource type="PackedScene" uid="uid://c4k3tbw6i7k25" path="res://scenes/Vegetable Containers/pineapple_container.tscn" id="9_onmcy"]
+[ext_resource type="PackedScene" uid="uid://ci7qq8dvyoh0f" path="res://scenes/Vegetable Containers/cucumber_container.tscn" id="11_30iu3"]
+[ext_resource type="PackedScene" uid="uid://dhynlot3ihvtc" path="res://scenes/Vegetable Containers/carrot_container.tscn" id="12_v4q71"]
+[ext_resource type="PackedScene" uid="uid://iroms3xaabon" path="res://scenes/Vegetable Containers/potato_container.tscn" id="14_jv1gi"]
+[ext_resource type="PackedScene" uid="uid://bni34byxgl8m8" path="res://scenes/Vegetable Containers/pepperoni_container.tscn" id="16_48hfl"]
+[ext_resource type="PackedScene" uid="uid://bbxppojdka8u" path="res://scenes/Vegetable Containers/cheese_container.tscn" id="18_bu7uo"]
+[ext_resource type="PackedScene" uid="uid://b3p727tvn6smd" path="res://scenes/trash.tscn" id="19_bu7uo"]
+[ext_resource type="PackedScene" uid="uid://c8rx3ilcgvsgo" path="res://scenes/bell.tscn" id="20_xhruc"]
+[ext_resource type="PackedScene" uid="uid://brp52bh38mm88" path="res://scenes/Vegetable Containers/corn_container.tscn" id="23_ncn3f"]
+[ext_resource type="PackedScene" uid="uid://3ixe3tih0wmp" path="res://scenes/Vegetable Containers/cabbage_container.tscn" id="24_psotc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fo2rx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fo2rx"]
+texture = SubResource("CanvasTexture_fo2rx")
+modulate_color = Color(0.741176, 0.741176, 0.741176, 0.741176)
+
+[node name="The Food Truck" type="Node2D"]
+script = ExtResource("1_fo2rx")
+
+[node name="Camera" type="Camera2D" parent="."]
+z_index = 1000
+position = Vector2(960, 535)
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1890
+position_smoothing_enabled = true
+script = ExtResource("1_4p834")
+
+[node name="Shutter_Menu" parent="." instance=ExtResource("3_1vidy")]
+
+[node name="UI_Layer" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+script = ExtResource("3_fo2rx")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI_Layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Up_Button" type="Button" parent="UI_Layer/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxTexture_fo2rx")
+text = "^"
+
+[node name="Down_Button" type="Button" parent="UI_Layer/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxTexture_fo2rx")
+text = "V"
+
+[node name="Click_Blocker" type="Control" parent="UI_Layer/MarginContainer/Down_Button"]
+z_index = -1
+layout_mode = 1
+anchor_top = -3.04
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.05176e-05
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lock_Button" type="Button" parent="UI_Layer"]
+z_index = 1000
+offset_left = 2914.0
+offset_top = 1872.0
+offset_right = 3114.0
+offset_bottom = 2072.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxTexture_fo2rx")
+text = "LOCK"
+
+[node name="ThePizzaTruckInterior01" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 945)
+texture = ExtResource("1_fi7kp")
+
+[node name="Skybox" type="TextureRect" parent="."]
+z_index = -5
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_hy7pg")
+
+[node name="The_Pizza" parent="." instance=ExtResource("1_4gpfc")]
+position = Vector2(945, 1602)
+
+[node name="PizzaToppings" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 5
+
+[node name="Food Container Holder" type="Node" parent="."]
+
+[node name="Onion_Container" parent="Food Container Holder" instance=ExtResource("6_tcblg")]
+position = Vector2(205, 1291)
+food_type = "Onion"
+
+[node name="Greenpepper_Container" parent="Food Container Holder" instance=ExtResource("6_dkdes")]
+position = Vector2(439, 1049)
+food_type = "Green Pepper"
+
+[node name="Tomato_Container" parent="Food Container Holder" instance=ExtResource("7_onmcy")]
+position = Vector2(686, 1041)
+food_type = "Tomato"
+
+[node name="Mushroom_Container" parent="Food Container Holder" instance=ExtResource("8_dkdes")]
+position = Vector2(957, 1042)
+food_type = "Mushroom"
+
+[node name="Pineapple_Container" parent="Food Container Holder" instance=ExtResource("9_onmcy")]
+position = Vector2(1223, 1051)
+food_type = "Pineapple"
+
+[node name="Carrot_Container" parent="Food Container Holder" instance=ExtResource("12_v4q71")]
+position = Vector2(1495, 1050)
+food_type = "Carrot"
+
+[node name="Cucumber_Container" parent="Food Container Holder" instance=ExtResource("11_30iu3")]
+position = Vector2(1748, 1052)
+food_type = "Cucumber"
+
+[node name="Pepperoni_Container" parent="Food Container Holder" instance=ExtResource("16_48hfl")]
+position = Vector2(470, 1293)
+food_type = "Pepperoni"
+
+[node name="Potato Container" parent="Food Container Holder" instance=ExtResource("14_jv1gi")]
+position = Vector2(1717, 1287)
+food_type = "Potato"
+
+[node name="Cheese_Container" parent="Food Container Holder" instance=ExtResource("18_bu7uo")]
+position = Vector2(142, 1528)
+food_type = "Cheese"
+
+[node name="Customer Container" type="Node" parent="."]
+
+[node name="Customer01" type="Sprite2D" parent="Customer Container"]
+z_index = -2
+position = Vector2(1466, 502)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_v0ew2")
+
+[node name="Decorations Container" type="Node" parent="."]
+
+[node name="Trash" parent="Decorations Container" instance=ExtResource("19_bu7uo")]
+position = Vector2(1749, 1802)
+
+[node name="Bell" parent="Decorations Container" instance=ExtResource("20_xhruc")]
+position = Vector2(1757, 770)
+
+[node name="Receipt01" type="Sprite2D" parent="Decorations Container"]
+position = Vector2(594, 120)
+texture = ExtResource("6_ox48p")
+
+[node name="Receipt02" type="Sprite2D" parent="Decorations Container"]
+position = Vector2(759, 123)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_ox48p")
+
+[node name="Pizzeria_Sign" type="Sprite2D" parent="Decorations Container"]
+position = Vector2(253, 246)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_tcblg")
+
+[node name="DEBUG_CurrentSelection" type="Label" parent="."]
+offset_left = 53.0
+offset_top = 1802.0
+offset_right = 265.0
+offset_bottom = 1847.0
+theme_override_font_sizes/font_size = 32
+text = "DEBUG LABEL"
+
+[node name="Corn Container" parent="." instance=ExtResource("23_ncn3f")]
+position = Vector2(1424, 1281)
+
+[node name="Cabbage Container" parent="." instance=ExtResource("24_psotc")]
+position = Vector2(171, 1048)
+
+[connection signal="pressed" from="UI_Layer/MarginContainer/Up_Button" to="UI_Layer" method="_on_up_button_pressed"]
+[connection signal="pressed" from="UI_Layer/MarginContainer/Down_Button" to="UI_Layer" method="_on_down_button_pressed"]
+[connection signal="pressed" from="UI_Layer/Lock_Button" to="." method="_on_lock_button_pressed"]

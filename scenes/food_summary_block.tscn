@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhw81ylb18qj7"]
+
+[ext_resource type="Script" uid="uid://cjgj5m5r3f3fo" path="res://scripts/food_summary_block.gd" id="1_tfhj4"]
+[ext_resource type="Texture2D" uid="uid://dbg1mo66colwg" path="res://assets/images/ingredients/Pineapple.png" id="1_tgego"]
+[ext_resource type="Texture2D" uid="uid://cdymytb7qfqnn" path="res://assets/ui/x.png" id="2_tfhj4"]
+
+[node name="Food_Summary_Block" type="Control"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(91, 37)
+script = ExtResource("1_tfhj4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(91, 37)
+
+[node name="BG_Color" type="ColorRect" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+color = Color(0, 1, 0, 0.607843)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="topping_icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_tgego")
+expand_mode = 1
+
+[node name="x_icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_tfhj4")
+expand_mode = 1
+
+[node name="topping_number" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 64
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1

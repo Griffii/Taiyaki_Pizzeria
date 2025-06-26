@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbnfryhpdie6i"]
+
+[ext_resource type="Texture2D" uid="uid://btluuh7qxw50m" path="res://assets/images/ingredients/Onion.png" id="1_8nyqo"]
+[ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_7oogg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngvx4"]
+size = Vector2(163, 147)
+
+[node name="Onion" type="Sprite2D" groups=["ingredients"]]
+texture = ExtResource("1_8nyqo")
+script = ExtResource("2_7oogg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -176.0
+offset_right = -18.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_ngvx4")

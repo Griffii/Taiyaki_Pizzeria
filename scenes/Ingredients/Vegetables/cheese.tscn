@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct8ovsxi4mlqh"]
+
+[ext_resource type="Texture2D" uid="uid://bq62eyiqwygon" path="res://assets/images/ingredients/Cheese.png" id="1_y1aod"]
+[ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_4m2yn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npraf"]
+size = Vector2(423.333, 358.182)
+
+[node name="Cheese" type="Sprite2D" groups=["ingredients"]]
+scale = Vector2(1.5, 1.1)
+texture = ExtResource("1_y1aod")
+script = ExtResource("2_4m2yn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.504
+anchor_top = 0.5
+anchor_right = 0.504
+anchor_bottom = 0.5
+offset_left = -472.048
+offset_top = -423.0
+offset_right = -47.048
+offset_bottom = -65.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.999995, 11.8182)
+shape = SubResource("RectangleShape2D_npraf")

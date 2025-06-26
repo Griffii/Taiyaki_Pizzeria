@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3 uid="uid://x3incmtxdthy"]
+
+[ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="1_iyt2g"]
+[ext_resource type="Script" uid="uid://bk2lhn5vwkeh3" path="res://scripts/shutter_menu.gd" id="1_r77vw"]
+[ext_resource type="PackedScene" uid="uid://dhw81ylb18qj7" path="res://scenes/food_summary_block.tscn" id="2_km0th"]
+
+[node name="Shutter_Menu" type="Control"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_r77vw")
+food_summary_block = ExtResource("2_km0th")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 92.0
+offset_right = 1757.0
+offset_bottom = 792.0
+color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[node name="MainMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 92.0
+offset_right = 1757.0
+offset_bottom = 792.0
+
+[node name="MainVBox" type="VBoxContainer" parent="MainMarginContainer"]
+layout_mode = 2
+
+[node name="TitleContainer" type="MarginContainer" parent="MainMarginContainer/MainVBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 140
+theme_override_constants/margin_bottom = 10
+
+[node name="Menu_Title" type="Label" parent="MainMarginContainer/MainVBox/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_iyt2g")
+theme_override_font_sizes/font_size = 64
+text = "Order Summary"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainMarginContainer/MainVBox"]
+layout_mode = 2
+
+[node name="OrderContainer" type="MarginContainer" parent="MainMarginContainer/MainVBox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="The_Order" type="Label" parent="MainMarginContainer/MainVBox/OrderContainer"]
+custom_minimum_size = Vector2(1200, 100)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_iyt2g")
+theme_override_font_sizes/font_size = 48
+text = "Can I get a pizza with cheese, two pineapples, and three pepperonis."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ToppingsMarginContainer" type="MarginContainer" parent="MainMarginContainer/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 40
+
+[node name="ToppingsVBox" type="VBoxContainer" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer"]
+layout_mode = 2
+
+[node name="ToppingRow1" type="HBoxContainer" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Food_Summary_Block" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow1" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block2" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow1" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block3" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow1" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block4" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow1" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block5" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow1" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block6" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow1" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="ToppingRow2" type="HBoxContainer" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Food_Summary_Block" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow2" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block2" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow2" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block3" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow2" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block4" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow2" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block5" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow2" instance=ExtResource("2_km0th")]
+layout_mode = 2
+
+[node name="Food_Summary_Block6" parent="MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow2" instance=ExtResource("2_km0th")]
+layout_mode = 2

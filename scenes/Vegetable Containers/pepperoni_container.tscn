@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://bni34byxgl8m8"]
+
+[ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_d6bmc"]
+[ext_resource type="PackedScene" uid="uid://dwy4x1frrpl4a" path="res://scenes/Ingredients/Vegetables/pepperoni.tscn" id="2_d6bmc"]
+[ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="3_y7lyv"]
+[ext_resource type="Texture2D" uid="uid://dk56t3o1ec41h" path="res://assets/images/ingredients/Pepperoni.png" id="4_d6bmc"]
+[ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="5_sjm7r"]
+[ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="6_h1bqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46v1j"]
+size = Vector2(230, 221)
+
+[node name="Pepperoni_Container" type="Node2D"]
+script = ExtResource("1_d6bmc")
+food_scene = ExtResource("2_d6bmc")
+
+[node name="Container_Back" type="Sprite2D" parent="."]
+texture = ExtResource("3_y7lyv")
+
+[node name="Ingredients" type="Node2D" parent="."]
+
+[node name="Pepperoni" type="Sprite2D" parent="Ingredients"]
+position = Vector2(42, -58)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("4_d6bmc")
+
+[node name="Pepperoni2" type="Sprite2D" parent="Ingredients"]
+position = Vector2(-5, -93)
+rotation = -1.0973
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("4_d6bmc")
+
+[node name="Pepperoni3" type="Sprite2D" parent="Ingredients"]
+position = Vector2(-46, -67)
+rotation = -1.6702
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("4_d6bmc")
+
+[node name="Pepperoni4" type="Sprite2D" parent="Ingredients"]
+position = Vector2(21, -51)
+rotation = -3.91139
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("4_d6bmc")
+
+[node name="Container_Front" type="Sprite2D" parent="."]
+texture = ExtResource("5_sjm7r")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_right = 74.0
+offset_bottom = 47.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_h1bqt")
+theme_override_font_sizes/font_size = 28
+text = "Pepperonis"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -29.5)
+shape = SubResource("RectangleShape2D_46v1j")
