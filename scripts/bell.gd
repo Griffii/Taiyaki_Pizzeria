@@ -21,3 +21,5 @@ func _on_bell_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -
 		bell_sprite.scale = Vector2(1.0, 1.0)
 		
 		# Play bell sound
+		
+		

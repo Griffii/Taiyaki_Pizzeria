@@ -5,6 +5,7 @@ extends Control
 @onready var toppingRow1 = $MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow1
 @onready var toppingRow2 = $MainMarginContainer/MainVBox/ToppingsMarginContainer/ToppingsVBox/ToppingRow2
 
+
 func _process(_delta: float) -> void:
 	populate_food_summary()
 

@@ -4,6 +4,8 @@ extends Node2D
 @onready var lock_button = $UI_Layer/Lock_Button
 @onready var pizza_area = $"The_Pizza/PizzaArea"
 @onready var bell_button = $"Decorations Container/Bell"
+@onready var shutter_close_button = $UI_Layer/Close_Button
+@onready var shutter_menu = $Shutter_Menu
 
 func _ready() -> void:
 	bell_button.bell_pressed.connect(check_toppings) # Connect the bell pressed signal
@@ -58,9 +60,8 @@ func handle_mouse_click(event):
 func _on_lock_button_pressed() -> void:
 	if FoodTruck.current_selection:
 		FoodTruck.current_selection.locked = !FoodTruck.current_selection.locked
-		print(FoodTruck.current_selection, " is locked: ", FoodTruck.current_selection.locked)
 
-
+# Count toppings on the pizza area and send to global array
 func check_toppings():
 	# Store all ingredient nodes in the PizzaToppings container in an array
 	var all_toppings: Array = $%PizzaToppings.get_children()
@@ -96,3 +97,12 @@ func check_toppings():
 		
 	# Set global data
 	FoodTruck.pizza_toppings = toppings_summary
+	
+	# Show / Hide the shutter menu
+	shutter_menu.visible = true
+	shutter_close_button.visible = true
+	
+
+func _on_close_button_pressed() -> void:
+	shutter_menu.visible = false
+	shutter_close_button.visible = false

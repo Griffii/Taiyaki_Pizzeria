@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bxbwm4jh5rsiw"]
+[gd_scene load_steps=29 format=3 uid="uid://bxbwm4jh5rsiw"]
 
 [ext_resource type="PackedScene" uid="uid://7216s2y5bahb" path="res://scenes/the_pizza.tscn" id="1_4gpfc"]
 [ext_resource type="Script" uid="uid://i7i1fn3fcrm0" path="res://scripts/camera.gd" id="1_4p834"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dhynlot3ihvtc" path="res://scenes/Vegetable Containers/carrot_container.tscn" id="12_v4q71"]
 [ext_resource type="PackedScene" uid="uid://iroms3xaabon" path="res://scenes/Vegetable Containers/potato_container.tscn" id="14_jv1gi"]
 [ext_resource type="PackedScene" uid="uid://bni34byxgl8m8" path="res://scenes/Vegetable Containers/pepperoni_container.tscn" id="16_48hfl"]
+[ext_resource type="PackedScene" uid="uid://cpxs2fn0cqik4" path="res://scenes/speech_bubble.tscn" id="18_3tmb8"]
 [ext_resource type="PackedScene" uid="uid://bbxppojdka8u" path="res://scenes/Vegetable Containers/cheese_container.tscn" id="18_bu7uo"]
 [ext_resource type="PackedScene" uid="uid://b3p727tvn6smd" path="res://scenes/trash.tscn" id="19_bu7uo"]
 [ext_resource type="PackedScene" uid="uid://c8rx3ilcgvsgo" path="res://scenes/bell.tscn" id="20_xhruc"]
@@ -31,7 +32,11 @@
 texture = SubResource("CanvasTexture_fo2rx")
 modulate_color = Color(0.741176, 0.741176, 0.741176, 0.741176)
 
-[node name="The Food Truck" type="Node2D"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3tmb8"]
+texture = SubResource("CanvasTexture_fo2rx")
+modulate_color = Color(0.741176, 0.741176, 0.741176, 0.741176)
+
+[node name="TheFoodTruck" type="Node2D"]
 script = ExtResource("1_fo2rx")
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -45,6 +50,7 @@ position_smoothing_enabled = true
 script = ExtResource("1_4p834")
 
 [node name="Shutter_Menu" parent="." instance=ExtResource("3_1vidy")]
+visible = false
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -97,6 +103,18 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxTexture_fo2rx")
 text = "LOCK"
+
+[node name="Close_Button" type="Button" parent="UI_Layer"]
+visible = false
+z_index = 10
+z_as_relative = false
+offset_left = 3234.0
+offset_top = 234.0
+offset_right = 3456.0
+offset_bottom = 436.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxTexture_3tmb8")
+text = "CLOSE"
 
 [node name="ThePizzaTruckInterior01" type="Sprite2D" parent="."]
 z_index = -1
@@ -160,6 +178,10 @@ food_type = "Cheese"
 
 [node name="Customer Container" type="Node" parent="."]
 
+[node name="Bubble" parent="Customer Container" instance=ExtResource("18_3tmb8")]
+z_index = -2
+position = Vector2(820, 524)
+
 [node name="Customer01" type="Sprite2D" parent="Customer Container"]
 z_index = -2
 position = Vector2(1466, 502)
@@ -205,3 +227,4 @@ position = Vector2(171, 1048)
 [connection signal="pressed" from="UI_Layer/MarginContainer/Up_Button" to="UI_Layer" method="_on_up_button_pressed"]
 [connection signal="pressed" from="UI_Layer/MarginContainer/Down_Button" to="UI_Layer" method="_on_down_button_pressed"]
 [connection signal="pressed" from="UI_Layer/Lock_Button" to="." method="_on_lock_button_pressed"]
+[connection signal="pressed" from="UI_Layer/Close_Button" to="." method="_on_close_button_pressed"]

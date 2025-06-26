@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpxs2fn0cqik4"]
+
+[ext_resource type="Texture2D" uid="uid://w42faupd6su6" path="res://assets/ui/bubble.png" id="1_a8ruc"]
+[ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="2_x4eeu"]
+
+[node name="Bubble" type="Sprite2D"]
+texture = ExtResource("1_a8ruc")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -453.0
+offset_top = -197.0
+offset_right = 385.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_x4eeu")
+theme_override_font_sizes/font_size = 48
+text = "Can I get a pizza with cheese, 10 pineapples, and like 26 pepperonis?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
