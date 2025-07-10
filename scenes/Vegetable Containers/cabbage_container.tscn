@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://3ixe3tih0wmp"]
+[gd_scene load_steps=9 format=3 uid="uid://3ixe3tih0wmp"]
 
 [ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_wllln"]
 [ext_resource type="PackedScene" uid="uid://ch0p0tlt16aiu" path="res://scenes/Ingredients/Vegetables/cabbage.tscn" id="2_wllln"]
 [ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="3_lnrv4"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow01.png" id="3_s3j7s"]
 [ext_resource type="Texture2D" uid="uid://de6ychmsfpink" path="res://assets/images/ingredients/Cabbage.png" id="4_wllln"]
 [ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="5_juii6"]
 [ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="6_8kpu2"]
@@ -14,6 +15,11 @@ size = Vector2(230, 269)
 script = ExtResource("1_wllln")
 food_scene = ExtResource("2_wllln")
 food_type = "Cabbage"
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("3_s3j7s")
 
 [node name="Container_Back" type="Sprite2D" parent="."]
 texture = ExtResource("3_lnrv4")

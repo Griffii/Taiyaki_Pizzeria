@@ -1,21 +1,118 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpxs2fn0cqik4"]
+[gd_scene load_steps=7 format=3 uid="uid://cpxs2fn0cqik4"]
 
 [ext_resource type="Texture2D" uid="uid://w42faupd6su6" path="res://assets/ui/bubble.png" id="1_a8ruc"]
-[ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="2_x4eeu"]
+[ext_resource type="Script" uid="uid://demegfb250ymi" path="res://scripts/speech_bubble.gd" id="1_e1pub"]
 
-[node name="Bubble" type="Sprite2D"]
+[sub_resource type="Animation" id="Animation_e1pub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_x4eeu"]
+resource_name = "fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a8jen"]
+resource_name = "fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8jen"]
+_data = {
+&"RESET": SubResource("Animation_e1pub"),
+&"fade_in": SubResource("Animation_x4eeu"),
+&"fade_out": SubResource("Animation_a8jen")
+}
+
+[node name="Bubble" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_e1pub")
+
+[node name="Bubble_Rect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = -195.5
+offset_right = 475.0
+offset_bottom = 204.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_a8ruc")
+region_rect = Rect2(0, 0, 958, 453)
+patch_margin_left = 72
+patch_margin_top = 72
+patch_margin_right = 134
+patch_margin_bottom = 69
 
-[node name="Label" type="Label" parent="."]
-offset_left = -453.0
-offset_top = -197.0
-offset_right = 385.0
-offset_bottom = 201.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_x4eeu")
-theme_override_font_sizes/font_size = 48
-text = "Can I get a pizza with cheese, 10 pineapples, and like 26 pepperonis?"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-clip_text = true
+[node name="OrderContainer" type="FlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.0
+offset_top = -165.0
+offset_right = 397.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+alignment = 1
+last_wrap_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a8jen")
+}

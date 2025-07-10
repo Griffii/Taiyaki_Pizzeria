@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcog828sqvfa8"]
+[gd_scene load_steps=3 format=3 uid="uid://dcog828sqvfa8"]
 
 [ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="1_drca4"]
-[ext_resource type="Texture2D" uid="uid://b5q55o1vk5u6p" path="res://assets/images/ingredients/Tomato.png" id="2_drca4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_drca4"]
-size = Vector2(168, 160)
+[ext_resource type="Texture2D" uid="uid://b5q55o1vk5u6p" path="res://assets/images/ingredients/Tomatoe.png" id="2_drca4"]
 
 [node name="Tomato" type="Sprite2D" groups=["ingredients"]]
 texture = ExtResource("2_drca4")
@@ -23,9 +20,10 @@ offset_right = -16.0
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(82, 80)
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(2, 0)
-shape = SubResource("RectangleShape2D_drca4")
+polygon = PackedVector2Array(-58, -45, -27, -69, -2, -76, 30, -75, 57, -61, 75, -37, 84, -3, 77, 28, 48, 60, 16, 76, -17, 80, -46, 72, -70, 49, -84, 16, -79, -16)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxavqtqf8yyxg"]
+[gd_scene load_steps=9 format=3 uid="uid://cxavqtqf8yyxg"]
 
 [ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_6gdpg"]
 [ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="1_brb73"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://eg60na62g4qt" path="res://scenes/Ingredients/Vegetables/mushroom.tscn" id="2_h24br"]
 [ext_resource type="Texture2D" uid="uid://b2ixygkc3kq2a" path="res://assets/images/ingredients/Mushroom.png" id="2_jq4go"]
 [ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="3_6kp4u"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow01.png" id="3_oohqq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq4go"]
 size = Vector2(230, 245)
@@ -13,6 +14,11 @@ size = Vector2(230, 245)
 [node name="Mushroom_Container" type="Node2D"]
 script = ExtResource("1_6gdpg")
 food_scene = ExtResource("2_h24br")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("3_oohqq")
 
 [node name="Container_Back" type="Sprite2D" parent="."]
 texture = ExtResource("1_brb73")

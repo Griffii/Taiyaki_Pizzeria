@@ -1,0 +1,119 @@
+[gd_scene load_steps=11 format=3 uid="uid://csue5ibhokiqf"]
+
+[ext_resource type="Script" uid="uid://sxfwud1kasom" path="res://scripts/hover_label.gd" id="1_1mimc"]
+[ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="1_7us52"]
+[ext_resource type="Texture2D" uid="uid://qol8om3a2v2j" path="res://assets/ui/ToolTip_Bubble.png" id="3_kw52y"]
+[ext_resource type="Texture2D" uid="uid://dg88dvw2c1cfq" path="res://assets/ui/Question_Mark.png" id="4_s7na7"]
+[ext_resource type="AudioStream" uid="uid://dmwoeslvhp70" path="res://assets/sfx/arcade_beep_01.mp3" id="4_x77gs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7us52"]
+size = Vector2(3, 2)
+
+[sub_resource type="Animation" id="Animation_s7na7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TooltipBox:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_kw52y"]
+resource_name = "hover_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TooltipBox:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x77gs"]
+resource_name = "hover_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TooltipBox:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sb40v"]
+_data = {
+&"RESET": SubResource("Animation_s7na7"),
+&"hover_in": SubResource("Animation_kw52y"),
+&"hover_out": SubResource("Animation_x77gs")
+}
+
+[node name="HoverLabel" type="Label" node_paths=PackedStringArray("default_tip_texture")]
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7us52")
+theme_override_font_sizes/font_size = 64
+text = "Label"
+script = ExtResource("1_1mimc")
+default_tip_texture = NodePath("TooltipBox/Texture")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7us52")
+
+[node name="TooltipBox" type="NinePatchRect" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 82.0
+offset_top = -41.0
+offset_right = 128.0
+scale = Vector2(1, 1e-05)
+pivot_offset = Vector2(23, 41)
+texture = ExtResource("3_kw52y")
+region_rect = Rect2(0, 0, 137, 104)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Texture" type="TextureRect" parent="TooltipBox"]
+layout_mode = 0
+offset_right = 46.0
+offset_bottom = 41.0
+texture = ExtResource("4_s7na7")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TooltipBox"]
+layout_mode = 0
+offset_right = 38.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7us52")
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sb40v")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_x77gs")

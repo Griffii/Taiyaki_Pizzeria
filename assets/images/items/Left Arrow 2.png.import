@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j0yoglng6nfg"
-path="res://.godot/imported/Potato.png-2b1c47b13202b81537d813e5200f43f7.ctex"
+uid="uid://c30m6psywrsgt"
+path="res://.godot/imported/Left Arrow 2.png-b92ccb9e812745a9dfe6bfb246ae6141.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ingredients/Potato.png"
-dest_files=["res://.godot/imported/Potato.png-2b1c47b13202b81537d813e5200f43f7.ctex"]
+source_file="res://assets/images/items/Left Arrow 2.png"
+dest_files=["res://.godot/imported/Left Arrow 2.png-b92ccb9e812745a9dfe6bfb246ae6141.ctex"]
 
 [params]
 

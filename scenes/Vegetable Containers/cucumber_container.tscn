@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci7qq8dvyoh0f"]
+[gd_scene load_steps=9 format=3 uid="uid://ci7qq8dvyoh0f"]
 
 [ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="1_46v1j"]
 [ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_iesmn"]
 [ext_resource type="Texture2D" uid="uid://c2js4v6m8gib0" path="res://assets/images/ingredients/Cucumber.png" id="2_46v1j"]
 [ext_resource type="PackedScene" uid="uid://bopynbkimsfev" path="res://scenes/Ingredients/Vegetables/cucumber.tscn" id="2_c75cg"]
 [ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="3_c75cg"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow01.png" id="3_y77au"]
 [ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="4_gqq8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46v1j"]
@@ -13,6 +14,11 @@ size = Vector2(230, 221)
 [node name="Cucumber_Container" type="Node2D"]
 script = ExtResource("1_iesmn")
 food_scene = ExtResource("2_c75cg")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("3_y77au")
 
 [node name="Container_Back" type="Sprite2D" parent="."]
 texture = ExtResource("1_46v1j")

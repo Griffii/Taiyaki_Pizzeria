@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://lt08yncy2u87"]
+[gd_scene load_steps=7 format=3 uid="uid://lt08yncy2u87"]
 
 [ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_1rwss"]
 [ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="1_ar1v8"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow01.png" id="2_iuag1"]
 [ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="2_tq22u"]
 [ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="2_ym5qa"]
 
@@ -10,6 +11,11 @@ size = Vector2(230, 201)
 
 [node name="Foodcontainer" type="Node2D"]
 script = ExtResource("1_1rwss")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("2_iuag1")
 
 [node name="Container_Back" type="Sprite2D" parent="."]
 texture = ExtResource("1_ar1v8")

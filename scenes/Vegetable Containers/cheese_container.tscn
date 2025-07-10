@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbxppojdka8u"]
+[gd_scene load_steps=9 format=3 uid="uid://bbxppojdka8u"]
 
 [ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_h48ey"]
 [ext_resource type="PackedScene" uid="uid://ct8ovsxi4mlqh" path="res://scenes/Ingredients/Vegetables/cheese.tscn" id="2_h48ey"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow01.png" id="3_6xceu"]
 [ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="3_tgrtl"]
-[ext_resource type="Texture2D" uid="uid://csgmajf6df5ks" path="res://assets/images/ingredients/Cheese_Pile.png" id="4_h48ey"]
+[ext_resource type="Texture2D" uid="uid://csgmajf6df5ks" path="res://assets/images/ingredients/Cheese.png" id="4_h48ey"]
 [ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="5_s1eta"]
 [ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="6_25scu"]
 
@@ -13,6 +14,11 @@ size = Vector2(230, 229)
 [node name="Cheese_Container" type="Node2D"]
 script = ExtResource("1_h48ey")
 food_scene = ExtResource("2_h48ey")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("3_6xceu")
 
 [node name="Container_Back" type="Sprite2D" parent="."]
 texture = ExtResource("3_tgrtl")

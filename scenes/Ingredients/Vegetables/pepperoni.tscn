@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwy4x1frrpl4a"]
+[gd_scene load_steps=3 format=3 uid="uid://dwy4x1frrpl4a"]
 
 [ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_5nkga"]
 [ext_resource type="Texture2D" uid="uid://dk56t3o1ec41h" path="res://assets/images/ingredients/Pepperoni.png" id="2_6h4c6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h4c6"]
-size = Vector2(158.667, 156)
 
 [node name="Pepperoni" type="Sprite2D" groups=["ingredients"]]
 scale = Vector2(0.75, 0.75)
@@ -24,9 +21,10 @@ offset_right = -25.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(80.6667, 77)
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(-0.666664, -0.666668)
-shape = SubResource("RectangleShape2D_6h4c6")
+polygon = PackedVector2Array(-46, -52.6667, -7.33334, -72.6667, 31.3333, -75.3333, 55.3333, -64.6667, 75.3333, -36.6667, 78, -7.33333, 68.6667, 24.6667, 44.6667, 52.6667, 22, 68.6667, -4.66667, 76.6667, -30, 75.3333, -56.6667, 62, -71.3333, 42, -79.3333, 12.6667, -72.6667, -15.3333, -59.3333, -36.6667)

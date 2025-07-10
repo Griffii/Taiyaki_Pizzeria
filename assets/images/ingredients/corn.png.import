@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwtceyj8fqy15"
-path="res://.godot/imported/corn.png-2ef3a2b288527280b88e76ce16442923.ctex"
+path="res://.godot/imported/Corn.png-f8c8e08584122da0adf24ea62f6bc83b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ingredients/corn.png"
-dest_files=["res://.godot/imported/corn.png-2ef3a2b288527280b88e76ce16442923.ctex"]
+source_file="res://assets/images/ingredients/Corn.png"
+dest_files=["res://.godot/imported/Corn.png-f8c8e08584122da0adf24ea62f6bc83b.ctex"]
 
 [params]
 

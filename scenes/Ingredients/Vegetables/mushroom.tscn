@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://eg60na62g4qt"]
+[gd_scene load_steps=3 format=3 uid="uid://eg60na62g4qt"]
 
 [ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_dpqo2"]
 [ext_resource type="Texture2D" uid="uid://b2ixygkc3kq2a" path="res://assets/images/ingredients/Mushroom.png" id="2_mdhh5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdhh5"]
-size = Vector2(157.5, 155)
 
 [node name="Mushroom" type="Sprite2D" groups=["ingredients"]]
 scale = Vector2(0.8, 0.8)
@@ -24,9 +21,10 @@ offset_right = -18.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(74, 77)
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(4.99999, -1.13249e-05)
-shape = SubResource("RectangleShape2D_mdhh5")
+polygon = PackedVector2Array(-48.75, 3.75001, -63.75, -9.99999, -63.75, -36.25, -47.5, -58.75, -16.25, -75, 16.25, -76.25, 46.25, -62.5, 67.5, -40, 77.5, -6.24999, 73.75, 18.75, 56.25, 41.25, 37.5, 52.5, 17.5, 51.25, 5.00001, 43.75, -16.25, 70, -27.5, 77.5, -40, 76.25, -56.25, 70, -73.75, 51.25, -78.75, 33.75, -75, 26.25)

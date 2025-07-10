@@ -1,8 +1,8 @@
 shader_type canvas_item;
 
-uniform bool glow_enabled = false;
+uniform bool glow_enabled = true;
 uniform vec4 glow_color : source_color = vec4(1.0, 1.0, 0.0, 1.0); // Yellow
-uniform float glow_size = 10.0;
+uniform float glow_size = 25.0;
 
 void fragment() {
     vec4 tex_color = texture(TEXTURE, UV);

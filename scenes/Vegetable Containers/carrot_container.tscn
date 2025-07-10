@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhynlot3ihvtc"]
+[gd_scene load_steps=9 format=3 uid="uid://dhynlot3ihvtc"]
 
 [ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="1_46v1j"]
 [ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_l6ee3"]
 [ext_resource type="Texture2D" uid="uid://cllsdvrjpdfhk" path="res://assets/images/ingredients/Carrot.png" id="2_iesmn"]
 [ext_resource type="PackedScene" uid="uid://pfywwnctaxmq" path="res://scenes/Ingredients/Vegetables/carrot.tscn" id="2_voc1w"]
 [ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="3_c75cg"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow01.png" id="3_olkrd"]
 [ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="4_gqq8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s138b"]
@@ -13,6 +14,11 @@ size = Vector2(230, 220)
 [node name="Carrot_Container" type="Node2D"]
 script = ExtResource("1_l6ee3")
 food_scene = ExtResource("2_voc1w")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("3_olkrd")
 
 [node name="Container_Back" type="Sprite2D" parent="."]
 texture = ExtResource("1_46v1j")

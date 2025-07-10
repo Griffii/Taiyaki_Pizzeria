@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://brp52bh38mm88"]
+[gd_scene load_steps=9 format=3 uid="uid://brp52bh38mm88"]
 
 [ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_86bos"]
 [ext_resource type="PackedScene" uid="uid://bwb1kad7ay1pp" path="res://scenes/Ingredients/Vegetables/corn.tscn" id="2_wmrlu"]
 [ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="3_0km1h"]
-[ext_resource type="Texture2D" uid="uid://dwtceyj8fqy15" path="res://assets/images/ingredients/corn.png" id="4_anur2"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow01.png" id="3_ldr4x"]
+[ext_resource type="Texture2D" uid="uid://dwtceyj8fqy15" path="res://assets/images/ingredients/Corn.png" id="4_anur2"]
 [ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="5_k63op"]
 [ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="6_arwmx"]
 
@@ -14,6 +15,11 @@ size = Vector2(230, 222)
 script = ExtResource("1_86bos")
 food_scene = ExtResource("2_wmrlu")
 food_type = "Corn"
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("3_ldr4x")
 
 [node name="Container_Back" type="Sprite2D" parent="."]
 texture = ExtResource("3_0km1h")

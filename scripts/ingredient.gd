@@ -13,8 +13,7 @@ var locked = false
 
 
 func _ready() -> void:
-	#area.connect("input_event", Callable(self, "_on_area_input_event"))
-	
+	# Spawn dragging
 	dragging = true
 	drag_offset = get_global_mouse_position() - global_position
 	raise_to_top()
@@ -41,16 +40,8 @@ func _on_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -
 		if !locked: # Move to top layer only if unlocked
 			raise_to_top() 
 		
+		# This stops the user from spawning more toppings if clicking above a container
 		input_blocker.accept_event() 
-		# Only seems to stop from interacting with other ingredients, not the containers...
-
-func on_click():
-	dragging = true
-	drag_offset = get_global_mouse_position() - global_position
-	
-	FoodTruck.current_selection = self # Set as current selection when clicked
-	if !locked: # Move to top layer only if unlocked
-		raise_to_top() 
 
 func raise_to_top():
 	var parent = get_parent()
@@ -75,3 +66,10 @@ func raise_to_top():
 func delete():
 	queue_free()
 	FoodTruck.current_selection = null
+
+
+func rotate_left():
+	rotation += deg_to_rad(-20)
+
+func rotate_right():
+	rotation += deg_to_rad(20)

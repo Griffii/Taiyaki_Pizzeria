@@ -1,15 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pfywwnctaxmq"]
+[gd_scene load_steps=3 format=3 uid="uid://pfywwnctaxmq"]
 
 [ext_resource type="Texture2D" uid="uid://cllsdvrjpdfhk" path="res://assets/images/ingredients/Carrot.png" id="1_y40j0"]
 [ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_y40j0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_divik"]
-size = Vector2(163.538, 158.462)
-
 [node name="Carrot" type="Sprite2D" groups=["ingredients"]]
-top_level = true
-z_index = 1
-y_sort_enabled = true
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("1_y40j0")
 script = ExtResource("2_y40j0")
@@ -22,14 +16,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -184.0
-offset_top = -182.0
-offset_right = -16.0
-offset_bottom = -22.0
+offset_top = -184.0
+offset_right = -20.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(82, 80.4615)
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(-0.230766, -3.84616)
-shape = SubResource("RectangleShape2D_divik")
+polygon = PackedVector2Array(-61.3077, -40.7692, -38.2308, -63.8462, -1.3077, -77.6923, 32.5385, -74.6154, 55.6154, -60.7692, 75.6154, -31.5385, 80.2308, -5.38461, 77.1538, 17.6923, 58.6923, 45.3846, 27.9231, 70, -7.46154, 79.2308, -44.3846, 73.0769, -69, 45.3846, -82.8462, 6.92308, -73.6154, -23.8461)

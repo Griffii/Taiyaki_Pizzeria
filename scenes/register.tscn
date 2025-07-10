@@ -1,0 +1,190 @@
+[gd_scene load_steps=12 format=3 uid="uid://budwnl530p4ck"]
+
+[ext_resource type="Texture2D" uid="uid://x14o81v2l42p" path="res://assets/images/items/Register.png" id="1_gvynn"]
+[ext_resource type="Script" uid="uid://cvwbk77f0vckv" path="res://scripts/register.gd" id="1_n2w5e"]
+[ext_resource type="Texture2D" uid="uid://c1dht8gnbt5xc" path="res://assets/ui/Dollar_Green.png" id="2_ul2ju"]
+[ext_resource type="Texture2D" uid="uid://cbb5fniru4tqx" path="res://assets/ui/Dollar_Red.png" id="3_n2w5e"]
+[ext_resource type="FontFile" uid="uid://bgg2oqqs8kolj" path="res://assets/fonts/PixelOperator8.ttf" id="5_i4ar7"]
+[ext_resource type="AudioStream" uid="uid://tjsxqp8mtaas" path="res://assets/sfx/cash-register-kaching-sound-effect.mp3" id="6_b7sfs"]
+
+[sub_resource type="Animation" id="Animation_b7sfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Register:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DollarGreen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DollarRed:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i4ar7"]
+resource_name = "bounce"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Register:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m6wqx"]
+resource_name = "dollar_green"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DollarGreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-38, -172), Vector2(-39, -250)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DollarGreen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.298373),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Register:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jv4ey"]
+resource_name = "dollar_red"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DollarRed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-38, -170), Vector2(-38, -250)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DollarRed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Register:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.102696, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mxuud"]
+_data = {
+&"RESET": SubResource("Animation_b7sfs"),
+&"bounce": SubResource("Animation_i4ar7"),
+&"dollar_green": SubResource("Animation_m6wqx"),
+&"dollar_red": SubResource("Animation_jv4ey")
+}
+
+[node name="Register" type="Node2D"]
+script = ExtResource("1_n2w5e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mxuud")
+}
+
+[node name="Register" type="Sprite2D" parent="."]
+texture = ExtResource("1_gvynn")
+
+[node name="DollarGreen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-38, -172)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ul2ju")
+
+[node name="DollarRed" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-38, -250)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_n2w5e")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -77.0
+offset_top = -56.0
+offset_right = 38.0
+offset_bottom = -28.0
+rotation = -0.103482
+pivot_offset = Vector2(114.91, 24.7085)
+theme_override_fonts/font = ExtResource("5_i4ar7")
+theme_override_font_sizes/font_size = 20
+text = "$0.00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Audio_ChimeUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_b7sfs")

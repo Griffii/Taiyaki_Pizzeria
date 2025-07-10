@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwb1kad7ay1pp"]
+[gd_scene load_steps=3 format=3 uid="uid://bwb1kad7ay1pp"]
 
-[ext_resource type="Texture2D" uid="uid://dwtceyj8fqy15" path="res://assets/images/ingredients/corn.png" id="1_g4gdy"]
+[ext_resource type="Texture2D" uid="uid://dwtceyj8fqy15" path="res://assets/images/ingredients/Corn.png" id="1_g4gdy"]
 [ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_xdppx"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gp3p7"]
-size = Vector2(180, 121.538)
 
 [node name="Cucumber" type="Sprite2D" groups=["ingredients"]]
 texture = ExtResource("1_g4gdy")
@@ -23,9 +20,10 @@ offset_right = -14.0
 offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(88, 62)
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(0.769233, -2.30769)
-shape = SubResource("RectangleShape2D_gp3p7")
+polygon = PackedVector2Array(-59.7692, -26.6923, -31.7692, -48.6923, -1.76923, -61.6923, 27.2308, -48.6923, 57.2308, -30.6923, 78.2308, -6.69231, 89.2308, 22.3077, 82.2308, 34.3077, 60.2308, 52.3077, 42.2308, 49.3077, 27.2308, 41.3077, 18.2308, 56.3077, 5.23077, 56.3077, -6.76923, 51.3077, -16.7692, 61.3077, -44.7692, 55.3077, -59.7692, 51.3077, -72.7692, 42.3077, -90.7692, 27.3077, -84.7692, 2.30769, -70.7692, -12.6923)

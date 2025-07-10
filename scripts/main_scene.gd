@@ -3,19 +3,27 @@ extends Node2D
 @onready var debug_label = $DEBUG_CurrentSelection
 @onready var lock_button = $UI_Layer/Lock_Button
 @onready var pizza_area = $"The_Pizza/PizzaArea"
+@onready var pizza_toppings_container = $"PizzaToppings"
 @onready var bell_button = $"Decorations Container/Bell"
 @onready var shutter_close_button = $UI_Layer/Close_Button
 @onready var shutter_menu = $Shutter_Menu
+@onready var speech_bubble = $"Customer_Container/Bubble"
+@onready var bell = $"Decorations Container/Bell"
+@onready var customer = $Customer_Container/Customer
+
 
 func _ready() -> void:
-	bell_button.bell_pressed.connect(check_toppings) # Connect the bell pressed signal
-
-func _process(_delta: float) -> void:
-	if FoodTruck.current_selection:
-		debug_label.text = str(FoodTruck.current_selection.type)
-	else:
-		debug_label.text = "No selection"
+	bell_button.bell_pressed.connect(bell_pressed) # Connect the bell pressed signal
 	
+	customer.random_customer()
+	customer.anim_player.play("walk_in")
+	await customer.anim_player.animation_finished
+	
+	FoodTruck.generate_pizza_order()
+	speech_bubble.display_order(FoodTruck.desired_toppings)
+	
+	shutter_menu.order.text = FoodTruck.current_order
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -32,18 +40,20 @@ func handle_mouse_click(event):
 		if not ingredient.has_node("Control"):
 			print(ingredient, " has no Control node.")
 			continue
-			
-		var ctrl := ingredient.get_node("Control") as Control
+		
+		var ctrl = ingredient.get_node("Control") as Control
 		if not ctrl.visible:
 			print(ingredient, " has no visible Control node.")
 			continue
-			
+		
+		
 		if ctrl.get_global_rect().has_point(mouse_pos):
 			overlapping.append({"node": ingredient, "z": ctrl.z_index})
 			if ctrl.z_index > top_z:
 				top_z = ctrl.z_index
 				top_node = ingredient
-	# Debug: print all overlapping nodes and their z_index values
+	
+	## Debug: print all overlapping nodes and their z_index values
 	if overlapping.size() > 0:
 		print("\n--- Overlapping nodes at mouse ---")
 		for entry in overlapping:
@@ -54,12 +64,6 @@ func handle_mouse_click(event):
 			top_node._on_area_input_event(null, event, 0)
 		else:
 			print("[No input management function available] Selected ingredient:", top_node.type)
-
-
-# Lock selected ingredient in place so it cant move or change z index
-func _on_lock_button_pressed() -> void:
-	if FoodTruck.current_selection:
-		FoodTruck.current_selection.locked = !FoodTruck.current_selection.locked
 
 # Count toppings on the pizza area and send to global array
 func check_toppings():
@@ -86,7 +90,6 @@ func check_toppings():
 		else:
 			type_counts[topping_type] = 1
 	
-	
 	# Format into array of dicts: [{name: "Cheese", count: 1}, ...]
 	var toppings_summary: Array = []
 	for topping_type in type_counts.keys():
@@ -97,12 +100,105 @@ func check_toppings():
 		
 	# Set global data
 	FoodTruck.pizza_toppings = toppings_summary
+
+# Compare toppings to desired toppings
+func compare_pizza_to_order():
+	var results: Array = []
+	var desired_map: Dictionary = {}
 	
+	for d in FoodTruck.desired_toppings:
+		desired_map[d["name"].to_lower()] = int(d["count"])
+	
+	var matched_desired: Dictionary = {}
+	
+	# Process player's toppings
+	for topping in FoodTruck.pizza_toppings:
+		var name_original: String = topping["name"]
+		var name: String = name_original.to_lower()
+		var count: int = int(topping["count"])
+		var name_correct: bool = desired_map.has(name)
+		var expected_count: int = 0
+		var count_correct: int = 0
+		
+		if name_correct:
+			expected_count = desired_map[name]
+			count_correct = min(count, expected_count)
+			matched_desired[name] = true
+			
+		results.append({
+			"name": name_original,
+			"count": count,
+			"expected_count": expected_count,
+			"name_correct": name_correct,
+			"count_correct": count_correct
+		})
+		
+	# Add missing toppings (not on pizza at all)
+	for desired in FoodTruck.desired_toppings:
+		var desired_name: String = desired["name"]
+		var name = desired_name.to_lower()
+		
+		if not matched_desired.has(name):
+			results.append({
+				"name": desired_name,
+				"count": 0,
+				"expected_count": int(desired["count"]),
+				"name_correct": false,
+				"count_correct": 0
+			})
+			
+	FoodTruck.pizza_check_results = results
+	
+	print("--- Pizza Check Results ---")
+	for r in results:
+		print("  - ", r)
+
+func bell_pressed():
+	# Disable the bell
+	bell.bell_area.disabled = true
 	# Show / Hide the shutter menu
-	shutter_menu.visible = true
+	shutter_menu.anim_player.play("shutter_close")
 	shutter_close_button.visible = true
 	
+	check_toppings()
+	compare_pizza_to_order()
+	
+	# Clear order behind the menu
+	speech_bubble.clear_order()
+	speech_bubble.anim_player.play("fade_out")
+	
+	shutter_menu.populate_food_summary()
 
 func _on_close_button_pressed() -> void:
-	shutter_menu.visible = false
+	# Clear existing toppings from the scene
+	clear_pizza_toppings()
+	# Enable the bell
+	bell.bell_area.disabled = false
+	
+	# Hide Shutter Menu
+	shutter_menu.anim_player.play("shutter_open")
 	shutter_close_button.visible = false
+	
+	# New customer
+	customer.random_customer()
+	customer.anim_player.play("walk_in")
+	await customer.anim_player.animation_finished
+	
+	# Generate new order and update labels
+	FoodTruck.generate_pizza_order()
+	speech_bubble.display_order(FoodTruck.desired_toppings)
+	shutter_menu.order.text = FoodTruck.current_order
+
+func clear_pizza_toppings():
+	for child in pizza_toppings_container.get_children():
+		child.queue_free()
+
+###############################################################################
+## Buttons for rotating topping pieces ########################################
+###############################################################################
+func on_rotate_left_pressed():
+	if FoodTruck.current_selection:
+		FoodTruck.current_selection.rotate_left()
+func on_rotate_right_pressed():
+	if FoodTruck.current_selection:
+		FoodTruck.current_selection.rotate_right()
