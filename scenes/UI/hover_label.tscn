@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="1_7us52"]
 [ext_resource type="Texture2D" uid="uid://qol8om3a2v2j" path="res://assets/ui/ToolTip_Bubble.png" id="3_kw52y"]
 [ext_resource type="Texture2D" uid="uid://dg88dvw2c1cfq" path="res://assets/ui/Question_Mark.png" id="4_s7na7"]
-[ext_resource type="AudioStream" uid="uid://dmwoeslvhp70" path="res://assets/sfx/arcade_beep_01.mp3" id="4_x77gs"]
+[ext_resource type="AudioStream" uid="uid://bcha5ict688ti" path="res://assets/sfx/African4.mp3" id="5_s7na7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7us52"]
 size = Vector2(3, 2)
@@ -65,7 +65,10 @@ _data = {
 
 [node name="HoverLabel" type="Label" node_paths=PackedStringArray("default_tip_texture")]
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("1_7us52")
 theme_override_font_sizes/font_size = 64
 text = "Label"
@@ -116,4 +119,5 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_x77gs")
+stream = ExtResource("5_s7na7")
+volume_db = 10.0

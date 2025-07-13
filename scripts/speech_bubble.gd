@@ -47,7 +47,7 @@ func generate_labels(toppings: Array, font_size: int):
 	for i in range(toppings.size()):
 		var topping = toppings[i]
 		var count = topping["count"]
-		var name = topping["name"]
+		var topping_name = topping["name"]
 		
 		# Add comma or "and" depending on position
 		if i > 0 and i == toppings.size() - 1:
@@ -55,11 +55,11 @@ func generate_labels(toppings: Array, font_size: int):
 		elif i > 0:
 			add_word_label(",", font_size)
 			
-		if name == "cheese":
+		if topping_name == "cheese":
 			add_hover_label("cheese", font_size)
 		else:
 			var number_word = FoodTruck.num_to_words(count)
-			var plural_name = FoodTruck.pluralize(name, count)
+			var plural_name = FoodTruck.pluralize(topping_name, count)
 			
 			add_hover_label(number_word, font_size)
 			add_hover_label(plural_name, font_size)

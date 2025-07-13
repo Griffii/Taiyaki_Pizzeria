@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhw81ylb18qj7"]
+
+[ext_resource type="Script" uid="uid://cjgj5m5r3f3fo" path="res://scripts/food_summary_block.gd" id="1_tfhj4"]
+[ext_resource type="Texture2D" uid="uid://dbg1mo66colwg" path="res://assets/images/ingredients/Pineapple.png" id="1_tgego"]
+[ext_resource type="Shader" uid="uid://dr0cvni2fbjkw" path="res://shaders/item_glow.gdshader" id="2_7td5i"]
+[ext_resource type="Texture2D" uid="uid://cdymytb7qfqnn" path="res://assets/ui/x.png" id="2_tfhj4"]
+[ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="4_is3p8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qevkw"]
+shader = ExtResource("2_7td5i")
+shader_parameter/glow_enabled = true
+shader_parameter/glow_color = Color(1, 0.113725, 0.901961, 1)
+shader_parameter/glow_size = 25.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdem4"]
+bg_color = Color(0.274305, 0.603849, 1, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(1, 1, 1, 0.0588235)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+
+[node name="Food_Summary_Block" type="Control"]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 3
+anchor_right = 0.117
+anchor_bottom = 0.139
+offset_right = 25.36
+offset_bottom = -0.12001
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_tfhj4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -75.0
+offset_right = 111.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="topping_icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+z_index = 1
+z_as_relative = false
+material = SubResource("ShaderMaterial_qevkw")
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_tgego")
+expand_mode = 1
+
+[node name="x_icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+z_index = 1
+z_as_relative = false
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_tfhj4")
+expand_mode = 1
+
+[node name="topping_number" type="Label" parent="MarginContainer/HBoxContainer"]
+z_index = 1
+z_as_relative = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("4_is3p8")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_xdem4")
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1

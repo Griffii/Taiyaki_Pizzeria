@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbxppojdka8u"]
+
+[ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_h48ey"]
+[ext_resource type="PackedScene" uid="uid://ct8ovsxi4mlqh" path="res://scenes/Ingredients/Vegetables/cheese.tscn" id="2_h48ey"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow.png" id="3_6xceu"]
+[ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="3_tgrtl"]
+[ext_resource type="Texture2D" uid="uid://csgmajf6df5ks" path="res://assets/images/ingredients/Cheese.png" id="4_h48ey"]
+[ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="5_s1eta"]
+[ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="6_25scu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p81b3"]
+size = Vector2(230, 229)
+
+[node name="Cheese_Container" type="Node2D"]
+script = ExtResource("1_h48ey")
+food_scene = ExtResource("2_h48ey")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("3_6xceu")
+
+[node name="Container_Back" type="Sprite2D" parent="."]
+texture = ExtResource("3_tgrtl")
+
+[node name="Ingredients" type="Node2D" parent="."]
+
+[node name="CheesePile" type="Sprite2D" parent="Ingredients"]
+position = Vector2(0, -60)
+texture = ExtResource("4_h48ey")
+
+[node name="Container_Front" type="Sprite2D" parent="."]
+texture = ExtResource("5_s1eta")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = -1.0
+offset_right = 76.0
+offset_bottom = 47.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_25scu")
+theme_override_font_sizes/font_size = 38
+text = "Cheese"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -33.5)
+shape = SubResource("RectangleShape2D_p81b3")

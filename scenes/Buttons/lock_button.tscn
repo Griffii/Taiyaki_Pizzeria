@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://behj3xdbrctgk"]
+
+[ext_resource type="Script" uid="uid://yfnwxjjifxhj" path="res://scripts/lock_button.gd" id="1_lwcch"]
+[ext_resource type="Texture2D" uid="uid://boyiuvmmuc81w" path="res://assets/ui/lock.png" id="2_8h3h3"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow.png" id="2_ccn8l"]
+[ext_resource type="Texture2D" uid="uid://bw8fynfk2wa5o" path="res://assets/ui/unlock.png" id="3_ccn8l"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="5_ccn8l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lwcch"]
+
+[node name="Lock_Button" type="Button"]
+z_index = 1000
+offset_right = 130.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_lwcch")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_lwcch")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lwcch")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lwcch")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lwcch")
+script = ExtResource("1_lwcch")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(63, 147)
+scale = Vector2(0.244186, 0.224138)
+texture = ExtResource("2_ccn8l")
+
+[node name="Locked" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(64, 64)
+texture = ExtResource("2_8h3h3")
+
+[node name="Unlocked" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(64, 64)
+texture = ExtResource("3_ccn8l")
+
+[node name="NoSelection" type="Sprite2D" parent="."]
+self_modulate = Color(0.490196, 0.490196, 0.490196, 0.607843)
+position = Vector2(64, 64)
+texture = ExtResource("2_8h3h3")
+
+[node name="Lock_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ccn8l")
+volume_db = 24.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

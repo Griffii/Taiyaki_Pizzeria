@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhynlot3ihvtc"]
+
+[ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="1_46v1j"]
+[ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_l6ee3"]
+[ext_resource type="Texture2D" uid="uid://cllsdvrjpdfhk" path="res://assets/images/ingredients/Carrot.png" id="2_iesmn"]
+[ext_resource type="PackedScene" uid="uid://pfywwnctaxmq" path="res://scenes/Ingredients/Vegetables/carrot.tscn" id="2_voc1w"]
+[ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="3_c75cg"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow.png" id="3_olkrd"]
+[ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="4_gqq8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s138b"]
+size = Vector2(230, 220)
+
+[node name="Carrot_Container" type="Node2D"]
+script = ExtResource("1_l6ee3")
+food_scene = ExtResource("2_voc1w")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("3_olkrd")
+
+[node name="Container_Back" type="Sprite2D" parent="."]
+texture = ExtResource("1_46v1j")
+
+[node name="Ingredients" type="Node2D" parent="."]
+
+[node name="Carrot" type="Sprite2D" parent="Ingredients"]
+position = Vector2(38, -79)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_iesmn")
+
+[node name="Carrot6" type="Sprite2D" parent="Ingredients"]
+position = Vector2(-33, -75)
+rotation = -0.741894
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_iesmn")
+
+[node name="Carrot2" type="Sprite2D" parent="Ingredients"]
+position = Vector2(5, -83)
+rotation = -1.59015
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_iesmn")
+
+[node name="Carrot3" type="Sprite2D" parent="Ingredients"]
+position = Vector2(-48, -62)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_iesmn")
+
+[node name="Carrot4" type="Sprite2D" parent="Ingredients"]
+position = Vector2(57, -74)
+rotation = 1.32715
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_iesmn")
+
+[node name="Carrot5" type="Sprite2D" parent="Ingredients"]
+position = Vector2(3, -18)
+rotation = -0.77774
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_iesmn")
+
+[node name="Container_Front" type="Sprite2D" parent="."]
+texture = ExtResource("3_c75cg")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_right = 74.0
+offset_bottom = 47.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_gqq8e")
+theme_override_font_sizes/font_size = 36
+text = "Carrots"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -29)
+shape = SubResource("RectangleShape2D_s138b")

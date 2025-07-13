@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bopynbkimsfev"]
+[gd_scene load_steps=4 format=3 uid="uid://bopynbkimsfev"]
 
 [ext_resource type="Texture2D" uid="uid://c2js4v6m8gib0" path="res://assets/images/ingredients/Cucumber.png" id="1_qq50r"]
 [ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_6nx06"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="3_6nx06"]
 
 [node name="Cucumber" type="Sprite2D" groups=["ingredients"]]
 scale = Vector2(0.65, 0.65)
@@ -28,3 +29,7 @@ pivot_offset = Vector2(83, 81.4615)
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(0, -1.5)
 polygon = PackedVector2Array(-58.4615, -52.3462, -32.3077, -72.3462, 3.07692, -81.5769, 43.0769, -72.3462, 66.1539, -53.8846, 81.5385, -21.5769, 78.4615, 16.8846, 58.4615, 49.1923, 32.3077, 69.1923, -1.53846, 81.5, -30.7692, 79.9615, -56.9231, 64.5769, -80, 27.6538, -84.6154, -3.11539, -70.7692, -38.5)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6nx06")
+volume_db = 5.0

@@ -1,0 +1,261 @@
+[gd_scene load_steps=21 format=3 uid="uid://d3jm0g015n780"]
+
+[ext_resource type="Texture2D" uid="uid://ddtm8tf62tien" path="res://assets/images/backgrounds/Background 01.png" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://bvn3cpgaeo8ad" path="res://scripts/main_menu.gd" id="1_rtw2f"]
+[ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://utv2ecjmili1" path="res://assets/ui/Small Square Buttons.png" id="3_wu84c"]
+[ext_resource type="FontFile" uid="uid://bgg2oqqs8kolj" path="res://assets/fonts/PixelOperator8.ttf" id="4_wu84c"]
+[ext_resource type="Texture2D" uid="uid://buvmdj4qdca4f" path="res://assets/logos/Game Logo.png" id="5_8ln24"]
+[ext_resource type="AudioStream" uid="uid://nojr6bbmqgok" path="res://assets/sfx/menu_beep_01.mp3" id="7_oa1go"]
+[ext_resource type="AudioStream" uid="uid://dsu1lxna0x7jc" path="res://assets/sfx/Retro9.mp3" id="8_jk1qb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ln24"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 80, 15, 16)
+modulate_color = Color(0.392157, 1, 0.392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rtw2f"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 3.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(17, 112, 15, 16)
+modulate_color = Color(0.392157, 1, 0.392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oa1go"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 5.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 111, 16, 17)
+modulate_color = Color(0.392157, 1, 0.392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(1, 0, 14, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jk1qb"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(17, 0, 14, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dd4i"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(1, 0, 14, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lgwnu"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 80, 15, 16)
+modulate_color = Color(0.392157, 0.392157, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_flqon"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 3.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(17, 112, 15, 16)
+modulate_color = Color(0.392157, 0.392157, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rcqid"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 5.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 111, 16, 17)
+modulate_color = Color(0.392157, 0.392157, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ajci"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 80, 15, 16)
+modulate_color = Color(1, 0.392157, 0.392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7b55j"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 3.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(17, 112, 15, 16)
+modulate_color = Color(1, 0.392157, 0.392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5pajh"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 5.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 111, 16, 17)
+modulate_color = Color(1, 0.392157, 0.392157, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rtw2f")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l6cm7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 995.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Play_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(750, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/hover = SubResource("StyleBoxTexture_8ln24")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rtw2f")
+theme_override_styles/normal = SubResource("StyleBoxTexture_oa1go")
+text = "Play・プレイ"
+icon_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+alignment = 1
+
+[node name="-_Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxTexture_tbmy8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jk1qb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5dd4i")
+text = "-"
+
+[node name="+_Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxTexture_tbmy8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jk1qb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5dd4i")
+text = "+"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.898039, 0.431373, 0.772549, 1)
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+texture = ExtResource("3_wu84c")
+region_rect = Rect2(0, 16, 15, 15)
+patch_margin_left = 5
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 5
+
+[node name="TimerLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 64
+text = "05:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Freeplay_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxTexture_lgwnu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_flqon")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rcqid")
+text = "Free Play・フリープレイ"
+
+[node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ajci")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7b55j")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5pajh")
+text = "Quit・やめる"
+
+[node name="GameLogo" type="Sprite2D" parent="."]
+position = Vector2(564, 488)
+texture = ExtResource("5_8ln24")
+
+[node name="Beep_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_oa1go")
+
+[node name="Play_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_jk1qb")
+volume_db = 12.0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/-_Button" to="." method="_on_decrease_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/+_Button" to="." method="_on_increase_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Freeplay_Button" to="." method="_on_freeplay_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]

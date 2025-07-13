@@ -3,6 +3,7 @@ extends Sprite2D
 
 @onready var area: Area2D = $Area2D
 @onready var input_blocker: Control = $Control
+@onready var sfx = $SFX
 
 @export var type : String
 
@@ -10,6 +11,7 @@ var dragging = false
 var drag_offset = Vector2.ZERO
 var in_trash = false
 var locked = false
+var can_sfx = true
 
 
 func _ready() -> void:
@@ -20,6 +22,9 @@ func _ready() -> void:
 	
 	# Set as current selection in the root node
 	FoodTruck.current_selection = self
+	
+	# Increase volume of sfx
+	sfx.volume_db = 12.0
 
 func _process(_delta: float) -> void:
 	if dragging and !locked:
@@ -30,10 +35,16 @@ func _process(_delta: float) -> void:
 	
 	if in_trash and !dragging:
 		delete()
+	
+	# Make a sound when dropped, but only once
+	if !dragging and can_sfx:
+		sfx.play()
+		can_sfx = false
 
 func _on_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		dragging = true
+		can_sfx = true
 		drag_offset = get_global_mouse_position() - global_position
 		
 		FoodTruck.current_selection = self # Set as current selection when clicked
@@ -66,7 +77,6 @@ func raise_to_top():
 func delete():
 	queue_free()
 	FoodTruck.current_selection = null
-
 
 func rotate_left():
 	rotation += deg_to_rad(-20)

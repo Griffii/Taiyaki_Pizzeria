@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://nmo1leeqydda"]
+[gd_scene load_steps=4 format=3 uid="uid://nmo1leeqydda"]
 
 [ext_resource type="Texture2D" uid="uid://bac0lkor5x8er" path="res://assets/images/ingredients/Green Pepper.png" id="1_3gbgm"]
 [ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_hlppu"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="3_stbb8"]
 
 [node name="Green Pepper" type="Sprite2D" groups=["ingredients"]]
 texture = ExtResource("1_3gbgm")
@@ -27,3 +28,7 @@ pivot_offset = Vector2(82, 80)
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(1.5, -1.5)
 polygon = PackedVector2Array(-58.5, -34.5, -51.5, -59.5, -31.5, -75.5, -4.5, -76.5, 14.5, -66.5, 41.5, -69.5, 66.5, -59.5, 80.5, -34.5, 80.5, -4.5, 69.5, 10.5, 73.5, 34.5, 64.5, 56.5, 43.5, 73.5, 21.5, 78.5, -1.5, 72.5, -23.5, 56.5, -53.5, 60.5, -75.5, 44.5, -85.5, 12.5, -76.5, -16.5)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_stbb8")
+volume_db = 5.0

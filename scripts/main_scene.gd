@@ -1,28 +1,42 @@
 extends Node2D
 
-@onready var debug_label = $DEBUG_CurrentSelection
-@onready var lock_button = $UI_Layer/Lock_Button
+@onready var lock_button = $ButtonsLayer/Lock_Button
 @onready var pizza_area = $"The_Pizza/PizzaArea"
 @onready var pizza_toppings_container = $"PizzaToppings"
 @onready var bell_button = $"Decorations Container/Bell"
-@onready var shutter_close_button = $UI_Layer/Close_Button
+@onready var shutter_close_button = $ButtonsLayer/Close_Button
 @onready var shutter_menu = $Shutter_Menu
 @onready var speech_bubble = $"Customer_Container/Bubble"
 @onready var bell = $"Decorations Container/Bell"
 @onready var customer = $Customer_Container/Customer
+@onready var timer = $"Decorations Container/Timer"
+@onready var home_freeplay = $ButtonsLayer/HomeButton_FreePlay
+
+# Sounds
+@onready var beep_sound = $SFX_Container/beep_sound
+@onready var next_sound = $SFX_Container/next_sound
+@onready var back_sound = $SFX_Container/back_sound
 
 
 func _ready() -> void:
-	bell_button.bell_pressed.connect(bell_pressed) # Connect the bell pressed signal
-	
-	customer.random_customer()
-	customer.anim_player.play("walk_in")
-	await customer.anim_player.animation_finished
-	
-	FoodTruck.generate_pizza_order()
-	speech_bubble.display_order(FoodTruck.desired_toppings)
-	
-	shutter_menu.order.text = FoodTruck.current_order
+	if !FoodTruck.free_play:
+		bell_button.bell_pressed.connect(bell_pressed) # Connect the bell pressed signal
+		
+		customer.random_customer()
+		customer.anim_player.play("walk_in")
+		await customer.anim_player.animation_finished
+		
+		FoodTruck.generate_pizza_order()
+		speech_bubble.display_order(FoodTruck.desired_toppings)
+		
+		shutter_menu.order.text = FoodTruck.current_order
+		
+		# Reset global cash_total var
+		FoodTruck.current_cash = 0.0
+	else:
+		# Activate second home button
+		home_freeplay.visible = true
+		
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -46,7 +60,6 @@ func handle_mouse_click(event):
 			print(ingredient, " has no visible Control node.")
 			continue
 		
-		
 		if ctrl.get_global_rect().has_point(mouse_pos):
 			overlapping.append({"node": ingredient, "z": ctrl.z_index})
 			if ctrl.z_index > top_z:
@@ -54,16 +67,20 @@ func handle_mouse_click(event):
 				top_node = ingredient
 	
 	## Debug: print all overlapping nodes and their z_index values
-	if overlapping.size() > 0:
-		print("\n--- Overlapping nodes at mouse ---")
-		for entry in overlapping:
-			print("• ", entry["node"].type, " (z_index: ", entry["z"], ")")
+	#if overlapping.size() > 0:
+	#	print("\n--- Overlapping nodes at mouse ---")
+	#	for entry in overlapping:
+	#		print("• ", entry["node"].type, " (z_index: ", entry["z"], ")")
 	if top_node:
-		print("Top node selected: ", top_node.type)
+		#print("Top node selected: ", top_node.type)
 		if top_node.has_method("_on_area_input_event"):
 			top_node._on_area_input_event(null, event, 0)
 		else:
 			print("[No input management function available] Selected ingredient:", top_node.type)
+
+func set_timer(seconds: int):
+	timer.start_timer(seconds)
+	FoodTruck.game_time = seconds
 
 # Count toppings on the pizza area and send to global array
 func check_toppings():
@@ -170,6 +187,7 @@ func bell_pressed():
 	shutter_menu.populate_food_summary()
 
 func _on_close_button_pressed() -> void:
+	next_sound.play()
 	# Clear existing toppings from the scene
 	clear_pizza_toppings()
 	# Enable the bell
@@ -198,7 +216,16 @@ func clear_pizza_toppings():
 ###############################################################################
 func on_rotate_left_pressed():
 	if FoodTruck.current_selection:
+		beep_sound.play()
 		FoodTruck.current_selection.rotate_left()
 func on_rotate_right_pressed():
 	if FoodTruck.current_selection:
+		beep_sound.play()
 		FoodTruck.current_selection.rotate_right()
+
+
+
+func _on_home_button_pressed() -> void:
+	FoodTruck.free_play = false
+	back_sound.play()
+	SceneManager.change_scene("res://scenes/main_menu.tscn")

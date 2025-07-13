@@ -3,15 +3,14 @@ extends Node2D
 @onready var timer_label = $Label
 @onready var countdown_timer = $Timer
 
-var time_left := 0  # in seconds
+var time_left: int = 0  # in seconds
 
 func _ready():
 	countdown_timer.timeout.connect(_on_CountdownTimer_timeout)
-	
-	start_timer(5)
 
-func start_timer(minutes: int):
-	time_left = minutes * 60
+
+func start_timer(seconds: int):
+	time_left = seconds
 	update_timer_label()
 	countdown_timer.start()
 
@@ -29,4 +28,9 @@ func update_timer_label():
 	timer_label.text = "%02d:%02d" % [minutes, seconds]
 
 func on_timer_timeout():
-	print("Time's up!")
+	# Load the score screen
+	var score_screen_scene = load("res://scenes/UI/score_screen.tscn")
+	var score_screen = score_screen_scene.instantiate()
+
+	# Add it to the root viewport
+	get_tree().root.add_child(score_screen)

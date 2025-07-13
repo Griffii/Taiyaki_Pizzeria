@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Taiyaki Pizzeria"
-run/main_scene="uid://bxbwm4jh5rsiw"
+run/main_scene="uid://d3jm0g015n780"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://cceregsmww8m4"
@@ -20,6 +20,7 @@ config/icon="uid://buvmdj4qdca4f"
 [autoload]
 
 FoodTruck="*res://global_scripts/food_truck.gd"
+SceneManager="*res://global_scripts/SceneManager.gd"
 
 [display]
 

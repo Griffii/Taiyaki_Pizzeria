@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://lt08yncy2u87"]
+
+[ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_1rwss"]
+[ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="1_ar1v8"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow.png" id="2_iuag1"]
+[ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="2_tq22u"]
+[ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="2_ym5qa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rwss"]
+size = Vector2(230, 201)
+
+[node name="Foodcontainer" type="Node2D"]
+script = ExtResource("1_1rwss")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("2_iuag1")
+
+[node name="Container_Back" type="Sprite2D" parent="."]
+texture = ExtResource("1_ar1v8")
+
+[node name="Ingredients" type="Node2D" parent="."]
+
+[node name="Container_Front" type="Sprite2D" parent="."]
+texture = ExtResource("2_tq22u")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 4.0
+offset_right = 76.0
+offset_bottom = 51.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ym5qa")
+theme_override_font_sizes/font_size = 36
+text = "Food"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -19.5)
+shape = SubResource("RectangleShape2D_1rwss")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

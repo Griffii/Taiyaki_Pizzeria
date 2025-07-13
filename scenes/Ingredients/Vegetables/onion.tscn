@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbnfryhpdie6i"]
+[gd_scene load_steps=4 format=3 uid="uid://dbnfryhpdie6i"]
 
 [ext_resource type="Texture2D" uid="uid://btluuh7qxw50m" path="res://assets/images/ingredients/Onion.png" id="1_8nyqo"]
 [ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_7oogg"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="3_67ghv"]
 
 [node name="Onion" type="Sprite2D" groups=["ingredients"]]
 texture = ExtResource("1_8nyqo")
@@ -27,3 +28,7 @@ pivot_offset = Vector2(80, 74)
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(1.5, -0.5)
 polygon = PackedVector2Array(-60.5, -37.5, -32.5, -59.5, 2.5, -71.5, 39.5, -67.5, 63.5, -51.5, 77.5, -20.5, 78.5, 12.5, 59.5, 43.5, 29.5, 63.5, -3.5, 72.5, -35.5, 71.5, -62.5, 57.5, -78.5, 29.5, -80.5, -1.5)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_67ghv")
+volume_db = 5.0

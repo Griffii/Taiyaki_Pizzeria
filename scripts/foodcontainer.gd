@@ -33,8 +33,6 @@ func spawn_food():
 		food.type = food_type
 		pizza_toppings_container.add_child(food)
 
-
-
 func _on_area_2d_mouse_entered() -> void:
 	for child in $Ingredients.get_children():
 		if child is Sprite2D:

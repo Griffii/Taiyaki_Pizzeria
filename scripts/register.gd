@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var animation_player = $AnimationPlayer
+@onready var animation_player_green = $AnimationPlayerGreen
+@onready var animation_player_red = $AnimationPlayerRed
 @onready var shutter_menu = $"../../Shutter_Menu"
 
 @onready var register_display = $Label
@@ -21,36 +22,38 @@ func update_display():
 		register_display.text = "$%.2f" % money_total
 	else:
 		register_display.text = "-$%.2f" % abs(money_total)
+	
+	# Update global var as well
+	FoodTruck.current_cash = money_total
 
-func bounce():
-	animation_player.play("bounce")
+
 
 func correct_topping():
-	animation_player.play("dollar_green")
+	animation_player_green.play("dollar_green")
 	money_total += 1
 	update_display()
 	chime_up.play()
 
 func correct_amount():
-	animation_player.play("dollar_green")
+	animation_player_green.play("dollar_green")
 	money_total += 0.25
 	update_display()
 	chime_up.play()
 
 func wrong_topping():
-	animation_player.play("dollar_red")
+	animation_player_red.play("dollar_red")
 	money_total -= 1
 	update_display()
 	chime_up.play()
 
 func wrong_amount():
-	animation_player.play("dollar_red")
+	animation_player_red.play("dollar_red")
 	money_total -= 0.25
 	update_display()
 	chime_up.play()
 
 func missing_topping():
-	animation_player.play("dollar_red")
+	animation_player_red.play("dollar_red")
 	money_total -= 0.5
 	update_display()
 	chime_up.play()

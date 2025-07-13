@@ -9,7 +9,7 @@ var revealed_tip_texture: TextureRect
 @onready var tooltip_texture: TextureRect = $TooltipBox/Texture 
 @onready var tooltip_label: Label = $TooltipBox/Label
 @onready var anim: AnimationPlayer = $AnimationPlayer
-@onready var beep = $AudioStreamPlayer2D
+@onready var reveal_sfx = $AudioStreamPlayer2D
 
 var base_color := Color.WHITE
 var revealed := false
@@ -37,15 +37,17 @@ func _ready():
 
 func randomize_color():
 	var hue = randf()  # full color wheel
-	var saturation = randf_range(0.8, 1.0)
-	var value = randf_range(0.4, 0.6)
+	var saturation = randf_range(0.9, 1.0)
+	var value = randf_range(0.5, 0.9)
 	
 	# Avoid hues near yellow (low contrast on white)
 	if hue > 0.12 and hue < 0.18:
-		hue = fmod(hue + 0.1, 1.0)
-		
+		hue = fmod(hue + 0.2, 1.0)
+	
 	base_color = Color.from_hsv(hue, saturation, value)
 	add_theme_color_override("font_color", base_color)
+
+
 
 
 
@@ -96,9 +98,8 @@ func _on_mouse_exited():
 	if finished == "hover_out":
 		tooltip_box.visible = false
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		beep.play()
 		scale = Vector2(0.95, 0.95)
 		await get_tree().create_timer(0.1).timeout
 		scale = Vector2.ONE
@@ -108,6 +109,7 @@ func _reveal_tooltip():
 	if revealed:
 		return
 	revealed = true
+	reveal_sfx.play()
 	tooltip_box.size = HINT_REVEALED_SIZE
 	setup_revealed_tip()
 	position_tooltip_box()
@@ -115,7 +117,7 @@ func _reveal_tooltip():
 func setup_revealed_tip():
 	var word = text.strip_edges().to_lower()
 	var tooltip_label_node = tooltip_label
-	var tooltip_texture = tooltip_texture
+	var tooltip_texture_node = tooltip_texture
 	
 	var number_words := {
 		"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
@@ -127,7 +129,7 @@ func setup_revealed_tip():
 	
 	# Reset both visibility
 	tooltip_label_node.visible = false
-	tooltip_texture.visible = false
+	tooltip_texture_node.visible = false
 	
 	if number_words.has(word):
 		tooltip_label_node.text = str(number_words[word])
@@ -141,8 +143,8 @@ func setup_revealed_tip():
 		var path = "res://assets/images/ingredients/" + image_name
 		if ResourceLoader.exists(path):
 			var tex = load(path)
-			tooltip_texture.texture = tex
-			tooltip_texture.visible = true
+			tooltip_texture_node.texture = tex
+			tooltip_texture_node.visible = true
 		else:
 			tooltip_label_node.text = "?"
 			tooltip_label_node.visible = true

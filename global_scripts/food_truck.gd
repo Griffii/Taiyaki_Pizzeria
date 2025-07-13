@@ -1,5 +1,8 @@
 extends Node
 
+# Determines wether user is in free play mode or not
+var free_play = false
+
 # Stores the data for the currently selected ingredient sprite
 var current_selection : Node2D
 
@@ -16,6 +19,11 @@ var desired_toppings : Array
 # Stores the compared results of the desired versus actual pizza toppings
 var pizza_check_results : Array
 
+# Store time limit for current game in seconds
+var game_time: int
+
+#Store a running total of the current cash as a float
+var current_cash: float
 
 ###############################################################################
 ## Generates a random pizza order #############################################

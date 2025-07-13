@@ -35,22 +35,29 @@ func populate_food_summary():
 			toppingRow1.add_child(block)
 		else:
 			toppingRow2.add_child(block)
-			
-		block.set_icon_and_amount(
-			topping["name"],
-			topping["name_correct"],
-			topping["count"],
-			topping["count_correct"]
-		)
 		
-		var name = topping["name"]
+		
+		var topping_name = topping["name"]
 		var name_correct = topping["name_correct"]
-		var count = topping["count"]
 		var count_correct = topping["count_correct"]
 		var expected_count = topping["expected_count"]
+		var count = topping["count"]
+		
+		var is_count_correct = false
+		
+		if(expected_count - count == 0):
+			is_count_correct = true
+		
+		block.set_icon_and_amount(
+			topping_name,
+			name_correct,
+			count,
+			is_count_correct
+		)
+		
 		
 		# Track used toppings (case-insensitive)
-		used_toppings.append(name)
+		used_toppings.append(topping_name)
 		
 		if name_correct and count > 0:
 			#print("✅ Signal: correct_topping for '%s'" % name)
