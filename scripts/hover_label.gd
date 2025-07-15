@@ -18,6 +18,21 @@ var revealed := false
 const HINT_HIDDEN_SIZE := Vector2(64, 64)
 const HINT_REVEALED_SIZE := Vector2(128, 128)  
 
+var toppings_01 = {
+	"cabbage": preload("res://assets/images/ingredients/Cabbage.png"),
+	"carrot": preload("res://assets/images/ingredients/Carrot.png"),
+	"cheese": preload("res://assets/images/ingredients/Cheese.png"),
+	"corn": preload("res://assets/images/ingredients/Corn.png"),
+	"cucumber": preload("res://assets/images/ingredients/Cucumber.png"),
+	"green pepper": preload("res://assets/images/ingredients/Green Pepper.png"),
+	"mushroom": preload("res://assets/images/ingredients/Mushroom.png"),
+	"onion": preload("res://assets/images/ingredients/Onion.png"),
+	"pepperoni": preload("res://assets/images/ingredients/Pepperoni.png"),
+	"pineapple": preload("res://assets/images/ingredients/Pineapple.png"),
+	"potato": preload("res://assets/images/ingredients/Potato.png"),
+	"tomato": preload("res://assets/images/ingredients/Tomato.png")
+}
+
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	randomize_color()
@@ -135,16 +150,14 @@ func setup_revealed_tip():
 		tooltip_label_node.text = str(number_words[word])
 		tooltip_label_node.visible = true
 	else:
-		# Convert plural to singular (naive, works for simple s-endings)
+		# Convert plural to singular (naive, works for simple s and es-endings)
 		if word.ends_with("s") and not word.ends_with("ss"):
-			word = word.substr(0, word.length() - 1)
-			
-		var image_name = word.capitalize() + ".png"
-		var path = "res://assets/images/ingredients/" + image_name
-		if ResourceLoader.exists(path):
-			var tex = load(path)
-			tooltip_texture_node.texture = tex
-			tooltip_texture_node.visible = true
-		else:
-			tooltip_label_node.text = "?"
-			tooltip_label_node.visible = true
+			if word.ends_with("es") and !word.begins_with("pine") and !word.begins_with("cab"):
+				word = word.substr(0, word.length() - 2)
+			else:
+				word = word.substr(0, word.length() - 1)
+		
+		
+		tooltip_texture_node.texture = toppings_01.get(word, null)
+		tooltip_texture_node.visible = true
+		

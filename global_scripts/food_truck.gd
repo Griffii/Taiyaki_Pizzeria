@@ -31,7 +31,7 @@ var current_cash: float
 func generate_pizza_order():
 	var all_ingredients = [
 		"cabbage", "carrot", "corn", "cucumber", "green pepper",
-		"mushroom", "onion", "pepperoni", "potatoe", "tomatoe", "pineapple"
+		"mushroom", "onion", "pepperoni", "potato", "tomato", "pineapple"
 	]
 	
 	var order_parts: Array = []
@@ -70,6 +70,10 @@ func pluralize(word: String, count: int) -> String:
 			return word  # already plural, like "pepperonis"
 		if word == "corn":
 			return word # Don't pluralize corn
+		if word == "tomato":
+			return word + "es"
+		if word == "potato":
+			return word + "es"
 		return word + "s"
 
 func join_ingredients(parts: Array) -> String:

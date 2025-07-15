@@ -150,7 +150,7 @@ stream = ExtResource("3_0a78a")
 [node name="Shutter_texture" type="TextureRect" parent="."]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
 layout_mode = 0
-offset_left = 212.0
+offset_left = 198.0
 offset_top = 93.0
 offset_right = 1752.0
 offset_bottom = 794.0

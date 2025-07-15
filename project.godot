@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Taiyaki Pizzeria"
+config/version="1.0"
 run/main_scene="uid://d3jm0g015n780"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
@@ -26,7 +27,6 @@ SceneManager="*res://global_scripts/SceneManager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/initial_position_type=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
@@ -54,3 +54,4 @@ click={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

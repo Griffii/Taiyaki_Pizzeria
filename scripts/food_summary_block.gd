@@ -5,16 +5,24 @@ extends Control
 
 @onready var shutter_menu = $"../../../../../.."
 
+var toppings_01 = {
+	"cabbage": preload("res://assets/images/ingredients/Cabbage.png"),
+	"carrot": preload("res://assets/images/ingredients/Carrot.png"),
+	"cheese": preload("res://assets/images/ingredients/Cheese.png"),
+	"corn": preload("res://assets/images/ingredients/Corn.png"),
+	"cucumber": preload("res://assets/images/ingredients/Cucumber.png"),
+	"green pepper": preload("res://assets/images/ingredients/Green Pepper.png"),
+	"mushroom": preload("res://assets/images/ingredients/Mushroom.png"),
+	"onion": preload("res://assets/images/ingredients/Onion.png"),
+	"pepperoni": preload("res://assets/images/ingredients/Pepperoni.png"),
+	"pineapple": preload("res://assets/images/ingredients/Pineapple.png"),
+	"potato": preload("res://assets/images/ingredients/Potato.png"),
+	"tomato": preload("res://assets/images/ingredients/Tomato.png")
+}
+
 func set_icon_and_amount(food: String, food_desired: bool, x: int, number_desired: bool):
-	# Find the path to the food image and set it as the topping sprite texture
-	var path = "res://assets/images/ingredients/%s.png" % food
-	
-	if ResourceLoader.exists(path, "Texture2D"):
-		var tex = load(path) as Texture2D
-		topping_icon.texture = tex
-	else:
-		push_warning("Texture not found: %s" % path)
-		
+	# Set texture
+	topping_icon.texture = toppings_01.get(food, null)
 	# Set the number label
 	amount.text = str(x)
 	

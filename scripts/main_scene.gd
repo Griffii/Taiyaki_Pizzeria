@@ -131,19 +131,19 @@ func compare_pizza_to_order():
 	# Process player's toppings
 	for topping in FoodTruck.pizza_toppings:
 		var name_original: String = topping["name"]
-		var name: String = name_original.to_lower()
+		var name_lower: String = name_original.to_lower()
 		var count: int = int(topping["count"])
-		var name_correct: bool = desired_map.has(name)
+		var name_correct: bool = desired_map.has(name_lower)
 		var expected_count: int = 0
 		var count_correct: int = 0
 		
 		if name_correct:
-			expected_count = desired_map[name]
+			expected_count = desired_map[name_lower]
 			count_correct = min(count, expected_count)
-			matched_desired[name] = true
+			matched_desired[name_lower] = true
 			
 		results.append({
-			"name": name_original,
+			"name": name_lower,
 			"count": count,
 			"expected_count": expected_count,
 			"name_correct": name_correct,
@@ -153,9 +153,8 @@ func compare_pizza_to_order():
 	# Add missing toppings (not on pizza at all)
 	for desired in FoodTruck.desired_toppings:
 		var desired_name: String = desired["name"]
-		var name = desired_name.to_lower()
 		
-		if not matched_desired.has(name):
+		if not matched_desired.has(desired_name):
 			results.append({
 				"name": desired_name,
 				"count": 0,

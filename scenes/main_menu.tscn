@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d3jm0g015n780"]
+[gd_scene load_steps=22 format=3 uid="uid://d3jm0g015n780"]
 
 [ext_resource type="Texture2D" uid="uid://ddtm8tf62tien" path="res://assets/images/backgrounds/Background 01.png" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://bvn3cpgaeo8ad" path="res://scripts/main_menu.gd" id="1_rtw2f"]
@@ -87,6 +87,8 @@ texture_margin_bottom = 6.0
 region_rect = Rect2(0, 111, 16, 17)
 modulate_color = Color(0.392157, 0.392157, 1, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbmy8"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ajci"]
 texture = ExtResource("3_wu84c")
 texture_margin_left = 4.0
@@ -94,7 +96,6 @@ texture_margin_top = 4.0
 texture_margin_right = 3.0
 texture_margin_bottom = 6.0
 region_rect = Rect2(0, 80, 15, 16)
-modulate_color = Color(1, 0.392157, 0.392157, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7b55j"]
 texture = ExtResource("3_wu84c")
@@ -103,7 +104,6 @@ texture_margin_top = 6.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(17, 112, 15, 16)
-modulate_color = Color(1, 0.392157, 0.392157, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5pajh"]
 texture = ExtResource("3_wu84c")
@@ -112,7 +112,6 @@ texture_margin_top = 5.0
 texture_margin_right = 4.0
 texture_margin_bottom = 6.0
 region_rect = Rect2(0, 111, 16, 17)
-modulate_color = Color(1, 0.392157, 0.392157, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -141,13 +140,14 @@ offset_left = 995.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 200
+theme_override_constants/margin_top = 60
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
+alignment = 1
 
 [node name="Play_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(750, 200)
@@ -218,7 +218,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Freeplay_Button" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(700, 100)
+custom_minimum_size = Vector2(750, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -231,20 +231,21 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_rcqid")
 text = "Free Play・フリープレイ"
 
 [node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(500, 100)
+custom_minimum_size = Vector2(750, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tbmy8")
 theme_override_styles/hover = SubResource("StyleBoxTexture_1ajci")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7b55j")
 theme_override_styles/normal = SubResource("StyleBoxTexture_5pajh")
-text = "Quit・やめる"
+text = "・Fullscreen・"
 
 [node name="GameLogo" type="Sprite2D" parent="."]
-position = Vector2(564, 488)
+position = Vector2(562, 544)
 texture = ExtResource("5_8ln24")
 
 [node name="Beep_Sound" type="AudioStreamPlayer2D" parent="."]

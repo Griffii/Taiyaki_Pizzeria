@@ -286,7 +286,7 @@ food_type = "Green Pepper"
 
 [node name="Tomato_Container" parent="Food Container Holder" instance=ExtResource("7_onmcy")]
 position = Vector2(698, 1041)
-food_type = "Tomatoe"
+food_type = "Tomato"
 
 [node name="Mushroom_Container" parent="Food Container Holder" instance=ExtResource("8_dkdes")]
 position = Vector2(812, 1322)
@@ -302,7 +302,7 @@ food_type = "Cucumber"
 
 [node name="Potato Container" parent="Food Container Holder" instance=ExtResource("14_jv1gi")]
 position = Vector2(165, 1041)
-food_type = "Potatoe"
+food_type = "Potato"
 
 [node name="Corn Container" parent="Food Container Holder" instance=ExtResource("23_ncn3f")]
 position = Vector2(976, 1044)

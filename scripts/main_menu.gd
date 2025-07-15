@@ -47,10 +47,12 @@ func get_time_from_label() -> int:
 		push_error("Invalid time format in label!")
 		return 0
 
+func toggle_fullscreen():
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
 
 func _on_quit_button_pressed():
-	if Engine.has_singleton("JavaScript"):
-		var js = JavaScriptBridge
-		js.eval("history.back();")
-	else:
-		get_tree().quit()
+	toggle_fullscreen()
