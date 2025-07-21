@@ -16,7 +16,6 @@ func _ready():
 	shutter_menu.correct_amount.connect(correct_amount)
 	shutter_menu.wrong_amount.connect(wrong_amount)
 
-
 func update_display():
 	if money_total >= 0.0:
 		register_display.text = "$%.2f" % money_total
@@ -26,8 +25,7 @@ func update_display():
 	# Update global var as well
 	FoodTruck.current_cash = money_total
 
-
-
+## Cash up / down functions
 func correct_topping():
 	animation_player_green.play("dollar_green")
 	money_total += 1
@@ -42,7 +40,7 @@ func correct_amount():
 
 func wrong_topping():
 	animation_player_red.play("dollar_red")
-	money_total -= 1
+	money_total -= 0.75
 	update_display()
 	chime_up.play()
 
@@ -53,6 +51,12 @@ func wrong_amount():
 	chime_up.play()
 
 func missing_topping():
+	animation_player_red.play("dollar_red")
+	money_total -= 0.5
+	update_display()
+	chime_up.play()
+
+func tip_revealed():
 	animation_player_red.play("dollar_red")
 	money_total -= 0.5
 	update_display()

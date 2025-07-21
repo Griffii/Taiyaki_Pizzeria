@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://x3incmtxdthy"]
 
-[ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="1_iyt2g"]
 [ext_resource type="Script" uid="uid://bk2lhn5vwkeh3" path="res://scripts/shutter_menu.gd" id="1_r77vw"]
 [ext_resource type="PackedScene" uid="uid://dhw81ylb18qj7" path="res://scenes/UI/food_summary_block.tscn" id="2_km0th"]
 [ext_resource type="AudioStream" uid="uid://dk1omu5y1e0r5" path="res://assets/sfx/rolling_door_01.mp3" id="3_0a78a"]
 [ext_resource type="Texture2D" uid="uid://cjnure68e8riw" path="res://assets/images/backgrounds/Shutter_01.png" id="3_77ams"]
+[ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="5_uwr6a"]
 
 [sub_resource type="Animation" id="Animation_0a78a"]
 length = 0.001
@@ -157,15 +157,6 @@ offset_bottom = 794.0
 scale = Vector2(1, 1e-05)
 texture = ExtResource("3_77ams")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 2
-offset_left = 212.0
-offset_top = 92.0
-offset_right = 1757.0
-offset_bottom = 792.0
-color = Color(0.466181, 0.466181, 0.466181, 1)
-
 [node name="MainMarginContainer" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 0
@@ -190,7 +181,7 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 6
 theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("1_iyt2g")
+theme_override_fonts/font = ExtResource("5_uwr6a")
 theme_override_font_sizes/font_size = 64
 text = "Order Summary"
 horizontal_alignment = 1
@@ -214,8 +205,8 @@ theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 4
-theme_override_fonts/font = ExtResource("1_iyt2g")
-theme_override_font_sizes/font_size = 52
+theme_override_fonts/font = ExtResource("5_uwr6a")
+theme_override_font_sizes/font_size = 48
 text = "Can I get a pizza with cheese, 10 pineapples, and like 26 pepperonis?"
 horizontal_alignment = 1
 autowrap_mode = 3

@@ -11,6 +11,8 @@ extends Node2D
 @onready var customer = $Customer_Container/Customer
 @onready var timer = $"Decorations Container/Timer"
 @onready var home_freeplay = $ButtonsLayer/HomeButton_FreePlay
+@onready var settings_menu = %Settings_Menu
+@onready var camera_controls = $UI_Layer
 
 # Sounds
 @onready var beep_sound = $SFX_Container/beep_sound
@@ -36,9 +38,10 @@ func _ready() -> void:
 	else:
 		# Activate second home button
 		home_freeplay.visible = true
-		
 
-
+###############################################################################
+### INPUT HANDLING ############################################################
+###############################################################################
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		handle_mouse_click(event)
@@ -47,18 +50,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func handle_mouse_click(event):
 	var mouse_pos = get_global_mouse_position()
 	var top_node = null
-	var top_z := -INF
-	var overlapping := []
+	var top_z = -999 # Used to be -INF, changed it to avoid / by float errors
+	var overlapping = []
 	
-	for ingredient in get_tree().get_nodes_in_group("ingredients"):
-		if not ingredient.has_node("Control"):
-			print(ingredient, " has no Control node.")
-			continue
-		
+	# Get all the topping nodes when clicking
+	for ingredient in pizza_toppings_container.get_children():
 		var ctrl = ingredient.get_node("Control") as Control
-		if not ctrl.visible:
-			print(ingredient, " has no visible Control node.")
-			continue
 		
 		if ctrl.get_global_rect().has_point(mouse_pos):
 			overlapping.append({"node": ingredient, "z": ctrl.z_index})
@@ -68,15 +65,17 @@ func handle_mouse_click(event):
 	
 	## Debug: print all overlapping nodes and their z_index values
 	#if overlapping.size() > 0:
-	#	print("\n--- Overlapping nodes at mouse ---")
-	#	for entry in overlapping:
-	#		print("• ", entry["node"].type, " (z_index: ", entry["z"], ")")
+		#print("\n--- Overlapping nodes at mouse ---")
+		#for entry in overlapping:
+			#print("• ", entry["node"].type, " (z_index: ", entry["z"], ")")
+	
+	## Pass the click event to the top node
 	if top_node:
 		#print("Top node selected: ", top_node.type)
 		if top_node.has_method("_on_area_input_event"):
 			top_node._on_area_input_event(null, event, 0)
-		else:
-			print("[No input management function available] Selected ingredient:", top_node.type)
+
+###############################################################################
 
 func set_timer(seconds: int):
 	timer.start_timer(seconds)
@@ -92,7 +91,7 @@ func check_toppings():
 	
 	for topping in all_toppings:
 		if topping.has_node("Area2D"):
-			var topping_area := topping.get_node("Area2D") as Area2D
+			var topping_area = topping.get_node("Area2D") as Area2D
 			if pizza_area.overlaps_area(topping_area):
 				toppings_in_pizza_area.append(topping)
 	
@@ -141,7 +140,13 @@ func compare_pizza_to_order():
 			expected_count = desired_map[name_lower]
 			count_correct = min(count, expected_count)
 			matched_desired[name_lower] = true
-			
+		
+		# If the set count is 99, and any amount are present, it's correct and gets paid once
+		# For cheese and ice creams
+		if expected_count == 99 and count >= 1:
+			count_correct = true
+			expected_count = count
+		
 		results.append({
 			"name": name_lower,
 			"count": count,
@@ -162,7 +167,7 @@ func compare_pizza_to_order():
 				"name_correct": false,
 				"count_correct": 0
 			})
-			
+	
 	FoodTruck.pizza_check_results = results
 	
 	print("--- Pizza Check Results ---")
@@ -185,6 +190,45 @@ func bell_pressed():
 	
 	shutter_menu.populate_food_summary()
 
+func clear_pizza_toppings():
+	for child in pizza_toppings_container.get_children():
+		child.queue_free()
+
+###############################################################################
+## Buttons for rotating topping pieces ########################################
+###############################################################################
+func on_rotate_left_pressed():
+	if FoodTruck.current_selection:
+		beep_sound.play()
+		FoodTruck.current_selection.rotate_left()
+func on_rotate_right_pressed():
+	if FoodTruck.current_selection:
+		beep_sound.play()
+		FoodTruck.current_selection.rotate_right()
+func on_flip_horizontal_pressed():
+	if FoodTruck.current_selection:
+		beep_sound.play()
+		FoodTruck.current_selection.flip_horizontal()
+func on_flip_vertical_pressed():
+	if FoodTruck.current_selection:
+		beep_sound.play()
+		FoodTruck.current_selection.flip_vertical()
+
+###############################################################################
+## Menu / UI Buttons ##########################################################
+###############################################################################
+func _on_home_button_pressed() -> void:
+	FoodTruck.free_play = false
+	back_sound.play()
+	SceneManager.change_scene("res://scenes/main_menu.tscn")
+func _on_settings_button_pressed() -> void:
+	if !settings_menu.menu_open:
+		settings_menu.anim_player.play("open_settings_menu")
+	else:
+		settings_menu.anim_player.play("close_settings_menu")
+	settings_menu.menu_open = !settings_menu.menu_open
+	beep_sound.play()
+
 func _on_close_button_pressed() -> void:
 	next_sound.play()
 	# Clear existing toppings from the scene
@@ -205,26 +249,6 @@ func _on_close_button_pressed() -> void:
 	FoodTruck.generate_pizza_order()
 	speech_bubble.display_order(FoodTruck.desired_toppings)
 	shutter_menu.order.text = FoodTruck.current_order
-
-func clear_pizza_toppings():
-	for child in pizza_toppings_container.get_children():
-		child.queue_free()
-
-###############################################################################
-## Buttons for rotating topping pieces ########################################
-###############################################################################
-func on_rotate_left_pressed():
-	if FoodTruck.current_selection:
-		beep_sound.play()
-		FoodTruck.current_selection.rotate_left()
-func on_rotate_right_pressed():
-	if FoodTruck.current_selection:
-		beep_sound.play()
-		FoodTruck.current_selection.rotate_right()
-
-
-
-func _on_home_button_pressed() -> void:
-	FoodTruck.free_play = false
-	back_sound.play()
-	SceneManager.change_scene("res://scenes/main_menu.tscn")
+func _on_reset_button_free_play_pressed() -> void:
+	clear_pizza_toppings()
+	next_sound.play()

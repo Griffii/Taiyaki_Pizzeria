@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwiuttnmyxqsn"]
+
+[ext_resource type="Texture2D" uid="uid://dbq4j2gq814b" path="res://assets/ui/ScrollBar_Blank_Button.png" id="1_dftvr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nbn6n"]
+load_path = "res://.godot/imported/ScrollBar_Scroller.png-f6b07b3914facc287dc0f9e1a2cf9f51.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7lb1b"]
+texture = SubResource("CompressedTexture2D_nbn6n")
+expand_margin_left = 10.0
+expand_margin_top = 15.0
+expand_margin_right = 10.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3pukn"]
+load_path = "res://.godot/imported/ScrollBar_Blank_Scroller.png-baebf6bac91406dbd39753defbe2c844.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_reu13"]
+texture = SubResource("CompressedTexture2D_3pukn")
+expand_margin_left = 10.0
+expand_margin_top = 15.0
+expand_margin_right = 10.0
+expand_margin_bottom = 15.0
+
+[node name="HSlider" type="HSlider"]
+custom_minimum_size = Vector2(50, 40)
+offset_bottom = 41.0
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 1
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("1_dftvr")
+theme_override_icons/grabber_highlight = ExtResource("1_dftvr")
+theme_override_styles/slider = SubResource("StyleBoxTexture_7lb1b")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_reu13")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_reu13")
+step = 100.0
+scrollable = false

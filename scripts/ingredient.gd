@@ -24,7 +24,11 @@ func _ready() -> void:
 	FoodTruck.current_selection = self
 	
 	# Increase volume of sfx
-	sfx.volume_db = 12.0
+	sfx.volume_db = 16.0
+	
+	#offset = texture.get_size() / 2
+
+
 
 func _process(_delta: float) -> void:
 	if dragging and !locked:
@@ -80,6 +84,18 @@ func delete():
 
 func rotate_left():
 	rotation += deg_to_rad(-20)
+	#input_blocker.rotation += deg_to_rad(-20)
 
 func rotate_right():
 	rotation += deg_to_rad(20)
+	#input_blocker.rotation += deg_to_rad(20)
+
+func flip_horizontal():
+	flip_h = !flip_h
+	#var current_scale_x = scale.x
+	#scale.x = -current_scale_x
+
+func flip_vertical():
+	flip_v = !flip_v
+	#var current_scale_y = scale.y
+	#scale.y = -current_scale_y

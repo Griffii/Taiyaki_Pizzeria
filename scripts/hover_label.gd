@@ -18,7 +18,10 @@ var revealed := false
 const HINT_HIDDEN_SIZE := Vector2(64, 64)
 const HINT_REVEALED_SIZE := Vector2(128, 128)  
 
-var toppings_01 = {
+signal on_tip_revealed
+
+var all_toppings = {
+	# Veggies
 	"cabbage": preload("res://assets/images/ingredients/Cabbage.png"),
 	"carrot": preload("res://assets/images/ingredients/Carrot.png"),
 	"cheese": preload("res://assets/images/ingredients/Cheese.png"),
@@ -28,9 +31,22 @@ var toppings_01 = {
 	"mushroom": preload("res://assets/images/ingredients/Mushroom.png"),
 	"onion": preload("res://assets/images/ingredients/Onion.png"),
 	"pepperoni": preload("res://assets/images/ingredients/Pepperoni.png"),
-	"pineapple": preload("res://assets/images/ingredients/Pineapple.png"),
 	"potato": preload("res://assets/images/ingredients/Potato.png"),
-	"tomato": preload("res://assets/images/ingredients/Tomato.png")
+	"tomato": preload("res://assets/images/ingredients/Tomato.png"),
+	# Fruit
+	"apple": preload("res://assets/images/ingredients/Apple.png"),
+	"banana": preload("res://assets/images/ingredients/Banana.png"),
+	"cherry": preload("res://assets/images/ingredients/Cherry.png"),
+	"kiwi fruit": preload("res://assets/images/ingredients/Kiwi.png"),
+	"melon": preload("res://assets/images/ingredients/Melon.png"),
+	"orange": preload("res://assets/images/ingredients/Orange.png"),
+	"peach": preload("res://assets/images/ingredients/Peach.png"),
+	"pineapple": preload("res://assets/images/ingredients/Pineapple.png"),
+	"strawberry": preload("res://assets/images/ingredients/Strawberry2.png"),
+	# Ice Cream
+	"vanilla ice cream": preload("res://assets/images/ingredients/Vanilla Icecream.png"),
+	"chocolate ice cream": preload("res://assets/images/ingredients/Chocolate Icecream.png"),
+	"strawberry ice cream": preload("res://assets/images/ingredients/Strawberry Icecream.png")
 }
 
 func _ready():
@@ -49,7 +65,6 @@ func _ready():
 	area_2d.mouse_exited.connect(_on_mouse_exited)
 	area_2d.input_event.connect(_on_input_event)
 
-
 func randomize_color():
 	var hue = randf()  # full color wheel
 	var saturation = randf_range(0.9, 1.0)
@@ -61,11 +76,6 @@ func randomize_color():
 	
 	base_color = Color.from_hsv(hue, saturation, value)
 	add_theme_color_override("font_color", base_color)
-
-
-
-
-
 func update_collision_shape():
 	await get_tree().process_frame
 	var shape_extents = size / 2
@@ -73,7 +83,6 @@ func update_collision_shape():
 	rect_shape.extents = shape_extents
 	shape.shape = rect_shape
 	area_2d.position = shape_extents
-
 func position_tooltip_box():
 	# Center the tooltip box above the label
 	tooltip_box.position = Vector2(
@@ -91,7 +100,6 @@ func position_tooltip_box():
 	tooltip_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tooltip_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
-
 func _on_mouse_entered():
 	add_theme_color_override("font_color", base_color.lightened(0.5))
 	if !revealed:
@@ -103,7 +111,6 @@ func _on_mouse_entered():
 	position_tooltip_box()
 	tooltip_box.visible = true
 	anim.play("hover_in")
-
 func _on_mouse_exited():
 	add_theme_color_override("font_color", base_color)
 	scale = Vector2.ONE
@@ -128,6 +135,10 @@ func _reveal_tooltip():
 	tooltip_box.size = HINT_REVEALED_SIZE
 	setup_revealed_tip()
 	position_tooltip_box()
+	
+	# If in hard mode, send a signal to lose money
+	if FoodTruck.hard_mode:
+		emit_signal("on_tip_revealed")
 
 func setup_revealed_tip():
 	var word = text.strip_edges().to_lower()
@@ -150,14 +161,17 @@ func setup_revealed_tip():
 		tooltip_label_node.text = str(number_words[word])
 		tooltip_label_node.visible = true
 	else:
-		# Convert plural to singular (naive, works for simple s and es-endings)
+		# Convert plural to singular
 		if word.ends_with("s") and not word.ends_with("ss"):
-			if word.ends_with("es") and !word.begins_with("pine") and !word.begins_with("cab"):
-				word = word.substr(0, word.length() - 2)
+			if word.ends_with("es") and !word.begins_with("orange") and !word.begins_with("apple") and !word.begins_with("pine") and !word.begins_with("cabbage"):
+				if word == "strawberries":
+					word = "strawberry"
+				elif word == "cherries":
+					word = "cherry"
+				else:
+					word = word.substr(0, word.length() - 2)
 			else:
 				word = word.substr(0, word.length() - 1)
 		
-		
-		tooltip_texture_node.texture = toppings_01.get(word, null)
+		tooltip_texture_node.texture = all_toppings.get(word, null)
 		tooltip_texture_node.visible = true
-		

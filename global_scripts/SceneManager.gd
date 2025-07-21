@@ -9,7 +9,6 @@ func _ready() -> void:
 	await get_tree().process_frame
 	shutter = preload("res://scenes/UI/shutter_transition.tscn").instantiate()
 	get_tree().root.add_child(shutter)
-	shutter.animation_player.play("open")
 	
 	current_scene = get_tree().root.get_node("MainMenu")
 

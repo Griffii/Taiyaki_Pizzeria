@@ -10,13 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Taiyaki Pizzeria"
-config/version="1.0"
+config/name="Pizzas & Parfaits"
+config/version="2.0"
 run/main_scene="uid://d3jm0g015n780"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
-boot_splash/image="uid://cceregsmww8m4"
-config/icon="uid://buvmdj4qdca4f"
+boot_splash/image="uid://ciw85o56oecvt"
+config/icon="uid://ciw85o56oecvt"
 
 [autoload]
 

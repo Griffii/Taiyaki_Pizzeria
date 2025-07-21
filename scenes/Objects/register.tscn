@@ -201,3 +201,4 @@ vertical_alignment = 1
 [node name="Audio_ChimeUp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_b7sfs")
 volume_db = 10.0
+bus = &"SFX"

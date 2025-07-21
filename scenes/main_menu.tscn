@@ -1,13 +1,29 @@
-[gd_scene load_steps=22 format=3 uid="uid://d3jm0g015n780"]
+[gd_scene load_steps=46 format=3 uid="uid://d3jm0g015n780"]
 
-[ext_resource type="Texture2D" uid="uid://ddtm8tf62tien" path="res://assets/images/backgrounds/Background 01.png" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://bvn3cpgaeo8ad" path="res://scripts/main_menu.gd" id="1_rtw2f"]
 [ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://da8mioapuf44u" path="res://assets/images/backgrounds/Park_Half.png" id="2_flqon"]
+[ext_resource type="Texture2D" uid="uid://bpasn185clye6" path="res://assets/images/backgrounds/Beach_Half.png" id="3_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://utv2ecjmili1" path="res://assets/ui/Small Square Buttons.png" id="3_wu84c"]
 [ext_resource type="FontFile" uid="uid://bgg2oqqs8kolj" path="res://assets/fonts/PixelOperator8.ttf" id="4_wu84c"]
-[ext_resource type="Texture2D" uid="uid://buvmdj4qdca4f" path="res://assets/logos/Game Logo.png" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://btlfe0r2w14e2" path="res://assets/ui/Box_Orange_Rounded.png" id="6_hstxw"]
 [ext_resource type="AudioStream" uid="uid://nojr6bbmqgok" path="res://assets/sfx/menu_beep_01.mp3" id="7_oa1go"]
+[ext_resource type="Texture2D" uid="uid://dktopa3j3w62k" path="res://assets/ui/ScrollSlider_Blank_Arrow.png" id="8_5pajh"]
+[ext_resource type="Texture2D" uid="uid://dqp12hbotg4vu" path="res://assets/logos/PizzaLogo.png" id="8_flqon"]
 [ext_resource type="AudioStream" uid="uid://dsu1lxna0x7jc" path="res://assets/sfx/Retro9.mp3" id="8_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://skmx5qcm8po6" path="res://assets/ui/ScrollSlider_WhiteOutline_Arrow.png" id="9_j7ex8"]
+[ext_resource type="Texture2D" uid="uid://c30wpax0wilcu" path="res://assets/logos/Parfaits03.png" id="9_rcqid"]
+[ext_resource type="Texture2D" uid="uid://dtkieyk6xsyui" path="res://assets/ui/ScrollSlider_Arrow.png" id="10_a8gd2"]
+[ext_resource type="Texture2D" uid="uid://ciw85o56oecvt" path="res://assets/logos/Double_Logo_02.png" id="12_flqon"]
+[ext_resource type="Texture2D" uid="uid://bg0e8ln4inaqj" path="res://assets/ui/ScrollSlider_WhiteOutline_Arrow - Right.png" id="14_hstxw"]
+[ext_resource type="Texture2D" uid="uid://cp1i1ptukvjh5" path="res://assets/ui/ScrollSlider_Blank_Arrow - Right.png" id="15_8egab"]
+[ext_resource type="PackedScene" uid="uid://6uilmm5xoph7" path="res://scenes/settings_menu.tscn" id="15_a8gd2"]
+[ext_resource type="Texture2D" uid="uid://jkvfg1smfy4u" path="res://assets/ui/ScrollSlider_Arrow - Right.png" id="16_gw5y6"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="18_8egab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pajh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcqid"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ln24"]
 texture = ExtResource("3_wu84c")
@@ -36,29 +52,45 @@ texture_margin_bottom = 6.0
 region_rect = Rect2(0, 111, 16, 17)
 modulate_color = Color(0.392157, 1, 0.392157, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hstxw"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
-texture = ExtResource("3_wu84c")
+texture = ExtResource("9_j7ex8")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 5.0
-region_rect = Rect2(1, 0, 14, 15)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jk1qb"]
-texture = ExtResource("3_wu84c")
+texture = ExtResource("8_5pajh")
 texture_margin_left = 4.0
 texture_margin_top = 6.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
-region_rect = Rect2(17, 0, 14, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dd4i"]
-texture = ExtResource("3_wu84c")
+texture = ExtResource("10_a8gd2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8egab"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gw5y6"]
+texture = ExtResource("14_hstxw")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
-texture_margin_bottom = 6.0
-region_rect = Rect2(1, 0, 14, 16)
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3wgol"]
+texture = ExtResource("15_8egab")
+texture_margin_left = 4.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1acrt"]
+texture = ExtResource("16_gw5y6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flqon"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lgwnu"]
 texture = ExtResource("3_wu84c")
@@ -86,6 +118,35 @@ texture_margin_right = 4.0
 texture_margin_bottom = 6.0
 region_rect = Rect2(0, 111, 16, 17)
 modulate_color = Color(0.392157, 0.392157, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgwnu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j7ex8"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 16, 16, 16)
+modulate_color = Color(0.950668, 0.476946, 0.598095, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a8gd2"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 3.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(16, 16, 16, 16)
+modulate_color = Color(0.724831, 0.185466, 0.367322, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hstxw"]
+texture = ExtResource("3_wu84c")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 16, 16, 16)
+modulate_color = Color(0.905882, 0.329412, 0.501961, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbmy8"]
 
@@ -127,72 +188,108 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -960.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_l6cm7")
+texture = ExtResource("2_flqon")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Background2" type="TextureRect" parent="."]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 995.0
+offset_left = 960.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 60
+texture = ExtResource("3_lgwnu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="PizzaLogo" type="Sprite2D" parent="."]
+position = Vector2(260, 923)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_flqon")
+
+[node name="ParfaitsLogo" type="Sprite2D" parent="."]
+position = Vector2(1688, 974)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_rcqid")
+
+[node name="GrayBox" type="Button" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5pajh")
+
+[node name="Main_Menu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -421.5
+offset_right = 314.0
+offset_bottom = 421.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxOrangeRounded" type="Sprite2D" parent="Main_Menu"]
+position = Vector2(319, 418)
+scale = Vector2(0.431788, 0.575497)
+texture = ExtResource("6_hstxw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_Menu"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Pizza_Menu" type="MarginContainer" parent="Main_Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_Menu/VBoxContainer/Pizza_Menu"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Play_Button" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(750, 200)
+[node name="Play_Button" type="Button" parent="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer"]
+custom_minimum_size = Vector2(500, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_bqqt6")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rcqid")
 theme_override_styles/hover = SubResource("StyleBoxTexture_8ln24")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_rtw2f")
 theme_override_styles/normal = SubResource("StyleBoxTexture_oa1go")
 text = "Play・プレイ"
 icon_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 alignment = 1
 
-[node name="-_Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="-_Button" type="Button" parent="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_bqqt6")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hstxw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_tbmy8")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_jk1qb")
 theme_override_styles/normal = SubResource("StyleBoxTexture_5dd4i")
-text = "-"
+text = "-  "
+alignment = 2
 
-[node name="+_Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("2_bqqt6")
-theme_override_font_sizes/font_size = 64
-theme_override_styles/hover = SubResource("StyleBoxTexture_tbmy8")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_jk1qb")
-theme_override_styles/normal = SubResource("StyleBoxTexture_5dd4i")
-text = "+"
-
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer/HBoxContainer"]
 self_modulate = Color(0.898039, 0.431373, 0.772549, 1)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -203,7 +300,8 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 5
 
-[node name="TimerLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect"]
+[node name="TimerLabel" type="Label" parent="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer/HBoxContainer/NinePatchRect"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -217,21 +315,52 @@ text = "05:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Freeplay_Button" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(750, 100)
+[node name="+_Button" type="Button" parent="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8egab")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gw5y6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3wgol")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1acrt")
+text = "  +"
+alignment = 0
+
+[node name="Freeplay_Button" type="Button" parent="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_bqqt6")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_flqon")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lgwnu")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_flqon")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rcqid")
-text = "Free Play・フリープレイ"
+text = "・Free Play・
+フリープレイ"
 
-[node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(750, 100)
+[node name="Settings_Button" type="Button" parent="Main_Menu/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lgwnu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_j7ex8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a8gd2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hstxw")
+text = "・Settings・
+セッティング"
+
+[node name="Fullscreen_Button" type="Button" parent="Main_Menu/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -244,19 +373,44 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7b55j")
 theme_override_styles/normal = SubResource("StyleBoxTexture_5pajh")
 text = "・Fullscreen・"
 
-[node name="GameLogo" type="Sprite2D" parent="."]
-position = Vector2(562, 544)
-texture = ExtResource("5_8ln24")
+[node name="Settings_Menu" parent="." instance=ExtResource("15_a8gd2")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1565.0
+offset_top = 458.0
+offset_right = 1565.0
+offset_bottom = 458.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Beep_Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_oa1go")
+bus = &"SFX"
+
+[node name="Click_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_8egab")
+volume_db = 16.0
+bus = &"SFX"
 
 [node name="Play_Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_jk1qb")
 volume_db = 12.0
+bus = &"SFX"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/-_Button" to="." method="_on_decrease_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/+_Button" to="." method="_on_increase_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Freeplay_Button" to="." method="_on_freeplay_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]
+[node name="DoubleLogo02" type="Sprite2D" parent="."]
+position = Vector2(315, 256)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_flqon")
+
+[connection signal="pressed" from="GrayBox" to="." method="switch_shops"]
+[connection signal="pressed" from="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer/HBoxContainer/-_Button" to="." method="_on_decrease_button_pressed"]
+[connection signal="pressed" from="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer/HBoxContainer/+_Button" to="." method="_on_increase_button_pressed"]
+[connection signal="pressed" from="Main_Menu/VBoxContainer/Pizza_Menu/VBoxContainer/Freeplay_Button" to="." method="_on_freeplay_button_pressed"]
+[connection signal="pressed" from="Main_Menu/VBoxContainer/Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Main_Menu/VBoxContainer/Fullscreen_Button" to="." method="toggle_fullscreen"]

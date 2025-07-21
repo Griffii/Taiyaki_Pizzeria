@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxxw1v4fi82c2"]
+
+[ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_31p2n"]
+[ext_resource type="PackedScene" uid="uid://ct8ovsxi4mlqh" path="res://scenes/Ingredients/Other/cheese.tscn" id="2_l33j3"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow.png" id="3_b5oaw"]
+[ext_resource type="Texture2D" uid="uid://c7jxuo8d6v8vh" path="res://assets/images/items/Ice Cream Tub - No Label.png" id="4_31p2n"]
+[ext_resource type="Texture2D" uid="uid://c2swavpnauvmh" path="res://assets/images/ingredients/Vanilla Icecream.png" id="5_l33j3"]
+[ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="6_pwjw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p81b3"]
+size = Vector2(245, 383)
+
+[node name="Vanilla_Icecream_Container" type="Node2D"]
+script = ExtResource("1_31p2n")
+food_scene = ExtResource("2_l33j3")
+food_type = "Vanilla Icecream"
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, 96)
+scale = Vector2(0.448837, 1.2069)
+texture = ExtResource("3_b5oaw")
+
+[node name="Container_Back" type="Sprite2D" parent="."]
+texture = ExtResource("4_31p2n")
+
+[node name="Ingredients" type="Node2D" parent="."]
+
+[node name="Icecream" type="Sprite2D" parent="Ingredients"]
+position = Vector2(1, -137)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_l33j3")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 12.0
+offset_right = 72.0
+offset_bottom = 60.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_pwjw8")
+theme_override_font_sizes/font_size = 38
+text = "Vanilla"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -60.5)
+shape = SubResource("RectangleShape2D_p81b3")

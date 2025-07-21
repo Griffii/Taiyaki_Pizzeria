@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct8ovsxi4mlqh"]
+
+[ext_resource type="Texture2D" uid="uid://bq62eyiqwygon" path="res://assets/images/ingredients/Cheese_Big.png" id="1_y1aod"]
+[ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_4m2yn"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="3_4m2yn"]
+
+[node name="Cheese" type="Sprite2D" groups=["ingredients"]]
+scale = Vector2(1.5, 1.1)
+texture = ExtResource("1_y1aod")
+script = ExtResource("2_4m2yn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -470.0
+offset_top = -423.0
+offset_right = -45.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-0.999995, 11.8182)
+polygon = PackedVector2Array(-146.333, -111.818, -117.667, -149.091, -57, -170, 45.6667, -177.273, 94.3333, -165.455, 161.667, -103.636, 197.667, -46.3637, 207.667, 9.99998, 192.333, 68.1818, 134.333, 147.273, 50.3333, 176.364, -15, 178.182, -91.6667, 164.545, -133, 143.636, -196.333, 83.6363, -209, -6.36365, -198.333, -55.4546, -167, -107.273)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4m2yn")
+volume_db = 5.0

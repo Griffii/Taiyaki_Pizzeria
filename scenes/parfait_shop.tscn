@@ -1,0 +1,536 @@
+[gd_scene load_steps=92 format=3 uid="uid://btnnawtn7bojy"]
+
+[ext_resource type="Script" uid="uid://bd655itbhe0e6" path="res://scripts/main_scene.gd" id="1_8bn78"]
+[ext_resource type="PackedScene" uid="uid://x3incmtxdthy" path="res://scenes/UI/shutter_menu.tscn" id="2_gsxa8"]
+[ext_resource type="Script" uid="uid://dwidoctgdr0q1" path="res://scripts/ui_layer.gd" id="3_tthxk"]
+[ext_resource type="Texture2D" uid="uid://huq08uygtrx" path="res://assets/ui/up_arrow.png" id="4_286ow"]
+[ext_resource type="Texture2D" uid="uid://jhh838bljfs7" path="res://assets/ui/down_arrow.png" id="5_by20n"]
+[ext_resource type="FontFile" uid="uid://dcussgvmlehgx" path="res://assets/fonts/BadComic-Regular.ttf" id="6_dgli7"]
+[ext_resource type="PackedScene" uid="uid://6uilmm5xoph7" path="res://scenes/settings_menu.tscn" id="6_sf6q6"]
+[ext_resource type="Texture2D" uid="uid://38gckb08gox5" path="res://assets/ui/Icon_Small_Blank_Arrow.png" id="7_t8fl1"]
+[ext_resource type="Texture2D" uid="uid://dahvpsnspej2q" path="res://assets/ui/home-icon.png" id="8_7ha7t"]
+[ext_resource type="PackedScene" uid="uid://behj3xdbrctgk" path="res://scenes/Buttons/lock_button.tscn" id="9_yneek"]
+[ext_resource type="Texture2D" uid="uid://ck14cgykshy1s" path="res://assets/images/items/Left Arrow.png" id="10_2uloq"]
+[ext_resource type="Texture2D" uid="uid://tphgn6kprw8p" path="res://assets/ui/settings-icon.png" id="10_kfkqr"]
+[ext_resource type="Texture2D" uid="uid://c30m6psywrsgt" path="res://assets/images/items/Left Arrow 2.png" id="11_ppdn7"]
+[ext_resource type="Texture2D" uid="uid://bgmbbehed8088" path="res://assets/ui/Icon_Small_Blank_Return.png" id="11_sstgf"]
+[ext_resource type="Texture2D" uid="uid://krne1vyn3j0c" path="res://assets/images/items/Right Arrow.png" id="12_hu6l6"]
+[ext_resource type="Texture2D" uid="uid://d1i4d3rs1n0wj" path="res://assets/images/items/Right Arrow 2.png" id="13_g2nwl"]
+[ext_resource type="Texture2D" uid="uid://br73ot782jql" path="res://assets/images/backgrounds/The Pizza Truck Interior 01.png" id="14_og2xr"]
+[ext_resource type="Texture2D" uid="uid://c4f1bbyui871u" path="res://assets/ui/horizontal-flip.png" id="14_t8fl1"]
+[ext_resource type="Texture2D" uid="uid://cc2eomxwh3fyg" path="res://assets/images/backgrounds/Background 02.png" id="15_hko51"]
+[ext_resource type="Texture2D" uid="uid://b8xrtn82dn7si" path="res://assets/ui/vertical-flip.png" id="15_sf6q6"]
+[ext_resource type="PackedScene" uid="uid://cb311lwkx36g0" path="res://scenes/Objects/the_bowl.tscn" id="16_iue2d"]
+[ext_resource type="PackedScene" uid="uid://2gh8ht28jg5" path="res://scenes/Containers/Fruit Containers/banana_container.tscn" id="18_fm843"]
+[ext_resource type="PackedScene" uid="uid://cipbkh12j32p5" path="res://scenes/Ingredients/Fruits/banana.tscn" id="19_dhmyv"]
+[ext_resource type="PackedScene" uid="uid://dsnfa6rtlqeaa" path="res://scenes/Ingredients/Fruits/peach.tscn" id="20_b1xnm"]
+[ext_resource type="PackedScene" uid="uid://c4k3tbw6i7k25" path="res://scenes/Containers/Fruit Containers/pineapple_container.tscn" id="20_hl45u"]
+[ext_resource type="PackedScene" uid="uid://c7v2t35csam0e" path="res://scenes/Containers/Fruit Containers/melon_container.tscn" id="20_ll7rw"]
+[ext_resource type="PackedScene" uid="uid://cdxy6hnvsdxoq" path="res://scenes/Ingredients/Fruits/melon.tscn" id="24_hxpry"]
+[ext_resource type="PackedScene" uid="uid://5m3exc8w6e54" path="res://scenes/Ingredients/Fruits/cherry.tscn" id="26_by0uo"]
+[ext_resource type="PackedScene" uid="uid://b22cnkprskswh" path="res://scenes/Containers/Fruit Containers/apple_container.tscn" id="27_d7rnl"]
+[ext_resource type="PackedScene" uid="uid://dt732710tpyya" path="res://scenes/Containers/Fruit Containers/peach_container.tscn" id="27_hko51"]
+[ext_resource type="PackedScene" uid="uid://c2bf4mrpkbif1" path="res://scenes/Ingredients/Fruits/apple.tscn" id="28_8bn78"]
+[ext_resource type="PackedScene" uid="uid://cpxs2fn0cqik4" path="res://scenes/UI/speech_bubble.tscn" id="29_a1ur3"]
+[ext_resource type="PackedScene" uid="uid://cbsqrlq31hra1" path="res://scenes/Containers/Fruit Containers/strawberry_container.tscn" id="29_gsxa8"]
+[ext_resource type="PackedScene" uid="uid://boo3b0pdxggeo" path="res://scenes/Objects/customer.tscn" id="30_nhs8c"]
+[ext_resource type="Texture2D" uid="uid://fg6he16xv43w" path="res://assets/images/items/Parfait_Bowl - Front.png" id="30_p3drd"]
+[ext_resource type="PackedScene" uid="uid://bu8u1le8kxalf" path="res://scenes/Ingredients/Fruits/strawberry.tscn" id="30_tthxk"]
+[ext_resource type="PackedScene" uid="uid://dsqlgcwy00xb8" path="res://scenes/Containers/Fruit Containers/orange_container.tscn" id="31_by20n"]
+[ext_resource type="PackedScene" uid="uid://b3p727tvn6smd" path="res://scenes/Objects/trash.tscn" id="31_i1ljb"]
+[ext_resource type="PackedScene" uid="uid://c8rx3ilcgvsgo" path="res://scenes/Objects/bell.tscn" id="32_2dle6"]
+[ext_resource type="PackedScene" uid="uid://br5p7h2fsh2vp" path="res://scenes/Ingredients/Fruits/orange.tscn" id="32_dgli7"]
+[ext_resource type="PackedScene" uid="uid://budwnl530p4ck" path="res://scenes/Objects/register.tscn" id="33_8xjel"]
+[ext_resource type="PackedScene" uid="uid://bauxnwdmsmnjp" path="res://scenes/Containers/Fruit Containers/kiwi_container.tscn" id="33_v36pm"]
+[ext_resource type="PackedScene" uid="uid://ggmhupyvlm6f" path="res://scenes/Objects/timer.tscn" id="34_2qvgs"]
+[ext_resource type="PackedScene" uid="uid://dxckqw58qblea" path="res://scenes/Ingredients/Fruits/kiwi.tscn" id="34_7ha7t"]
+[ext_resource type="Texture2D" uid="uid://m5n6k28i51ol" path="res://assets/images/items/receipt01.png" id="35_onj08"]
+[ext_resource type="PackedScene" uid="uid://c7gc3726l3b6l" path="res://scenes/Containers/Fruit Containers/cherry_container.tscn" id="36_8ejy7"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="37_ephly"]
+[ext_resource type="PackedScene" uid="uid://ddakycavyqf1b" path="res://scenes/Containers/chocolate_icecream_container.tscn" id="37_g2nwl"]
+[ext_resource type="AudioStream" uid="uid://bvufl8fmoj335" path="res://assets/sfx/African1.mp3" id="38_i5cyj"]
+[ext_resource type="PackedScene" uid="uid://bu6365d0oc1h4" path="res://scenes/Ingredients/Other/chocolate_icecream.tscn" id="38_og2xr"]
+[ext_resource type="AudioStream" uid="uid://bu8ijc6dh8xxw" path="res://assets/sfx/Modern9.mp3" id="39_kcwxu"]
+[ext_resource type="PackedScene" uid="uid://bd4c3pxu01pa0" path="res://scenes/Containers/strawberry_icecream_container.tscn" id="39_t8fl1"]
+[ext_resource type="PackedScene" uid="uid://q4aytoy1csws" path="res://scenes/Ingredients/Other/strawberry_icecream.tscn" id="40_sf6q6"]
+[ext_resource type="Texture2D" uid="uid://b8bktknufktr8" path="res://assets/logos/ParfaitShopLogo.png" id="42_v36pm"]
+[ext_resource type="PackedScene" uid="uid://cxxw1v4fi82c2" path="res://scenes/Containers/vanilla_icecream_container.tscn" id="46_yneek"]
+[ext_resource type="PackedScene" uid="uid://dmiwgucsmogqx" path="res://scenes/Ingredients/Other/vanilla_icecream.tscn" id="47_2uloq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cpg6i"]
+
+[sub_resource type="Gradient" id="Gradient_gqml2"]
+offsets = PackedFloat32Array(0.734884, 1)
+colors = PackedColorArray(0, 0, 0, 0.784314, 0.196078, 0.196078, 0.196078, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kmr2l"]
+gradient = SubResource("Gradient_gqml2")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dpbxw"]
+texture = SubResource("GradientTexture2D_kmr2l")
+
+[sub_resource type="Gradient" id="Gradient_svg6y"]
+offsets = PackedFloat32Array(0.0511628, 1)
+colors = PackedColorArray(0, 0, 0, 0.784314, 0.196078, 0.196078, 0.196078, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cpg6i"]
+gradient = SubResource("Gradient_svg6y")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dg8bv"]
+texture = SubResource("GradientTexture2D_cpg6i")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fscop"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i7owp"]
+gradient = SubResource("Gradient_gqml2")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svg6y"]
+texture = SubResource("GradientTexture2D_i7owp")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dg8bv"]
+gradient = SubResource("Gradient_svg6y")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7kmyi"]
+texture = SubResource("GradientTexture2D_dg8bv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ar0t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3tmb8"]
+texture = ExtResource("7_t8fl1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dsth1"]
+texture = ExtResource("7_t8fl1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r76mn"]
+texture = ExtResource("7_t8fl1")
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qd1jl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gqml2"]
+texture = ExtResource("8_7ha7t")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kmr2l"]
+texture = ExtResource("8_7ha7t")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xmywp"]
+load_path = "res://.godot/imported/home-icon.png-217f403b113f7aaaf83fa40abb7cc6cd.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i7owp"]
+texture = SubResource("CompressedTexture2D_xmywp")
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ij26y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aap3d"]
+texture = ExtResource("10_kfkqr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6npma"]
+texture = ExtResource("10_kfkqr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_23ptq"]
+texture = ExtResource("10_kfkqr")
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ytfd"]
+texture = ExtResource("11_sstgf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a1ur3"]
+texture = ExtResource("11_sstgf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhs8c"]
+texture = ExtResource("11_sstgf")
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfkqr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sstgf"]
+texture = ExtResource("14_t8fl1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xmywp"]
+texture = ExtResource("14_t8fl1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hl45u"]
+texture = ExtResource("14_t8fl1")
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5m8va"]
+texture = ExtResource("15_sf6q6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ficlp"]
+texture = ExtResource("15_sf6q6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qbnwh"]
+texture = ExtResource("15_sf6q6")
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[node name="Pizza_Shop" type="Node2D"]
+script = ExtResource("1_8bn78")
+
+[node name="Camera" type="Camera2D" parent="."]
+z_index = 1000
+position = Vector2(960, 535)
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1890
+position_smoothing_enabled = true
+
+[node name="Shutter_Menu" parent="." instance=ExtResource("2_gsxa8")]
+
+[node name="UI_Layer" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+script = ExtResource("3_tthxk")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI_Layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Up_Button" type="Button" parent="UI_Layer/MarginContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxTexture_cpg6i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dpbxw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dpbxw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dg8bv")
+icon = ExtResource("4_286ow")
+icon_alignment = 1
+
+[node name="Down_Button" type="Button" parent="UI_Layer/MarginContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxTexture_fscop")
+theme_override_styles/hover = SubResource("StyleBoxTexture_svg6y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_svg6y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7kmyi")
+icon = ExtResource("5_by20n")
+icon_alignment = 1
+
+[node name="Click_Blocker" type="Control" parent="UI_Layer/MarginContainer/Down_Button"]
+z_index = -1
+layout_mode = 1
+anchor_top = -1.787
+anchor_right = 1.0
+offset_top = -9.95001
+offset_right = 2.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonsLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Settings_Menu" parent="ButtonsLayer" instance=ExtResource("6_sf6q6")]
+unique_name_in_owner = true
+z_index = 5
+offset_left = -246.0
+offset_top = -444.0
+offset_right = 254.0
+offset_bottom = 206.0
+
+[node name="Close_Button" type="Button" parent="ButtonsLayer"]
+visible = false
+offset_left = 1573.0
+offset_top = 193.0
+offset_right = 1741.0
+offset_bottom = 295.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("6_dgli7")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxTexture_8ar0t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3tmb8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dsth1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_r76mn")
+icon_alignment = 1
+
+[node name="HomeButton" type="Button" parent="ButtonsLayer"]
+custom_minimum_size = Vector2(75, 75)
+offset_left = 508.0
+offset_top = 72.0
+offset_right = 583.0
+offset_bottom = 147.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_qd1jl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gqml2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kmr2l")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i7owp")
+
+[node name="SettingsButton" type="Button" parent="ButtonsLayer"]
+custom_minimum_size = Vector2(65, 65)
+offset_left = 619.0
+offset_top = 77.0
+offset_right = 684.0
+offset_bottom = 142.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_ij26y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_aap3d")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6npma")
+theme_override_styles/normal = SubResource("StyleBoxTexture_23ptq")
+
+[node name="HomeButton_FreePlay" type="Button" parent="ButtonsLayer"]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+offset_left = 1842.0
+offset_top = 1051.0
+offset_right = 1917.0
+offset_bottom = 1126.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_qd1jl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gqml2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kmr2l")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i7owp")
+
+[node name="ResetButton_FreePlay" type="Button" parent="ButtonsLayer"]
+custom_minimum_size = Vector2(75, 75)
+offset_left = 1839.0
+offset_top = 923.0
+offset_right = 1914.0
+offset_bottom = 998.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_qd1jl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8ytfd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a1ur3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nhs8c")
+
+[node name="Lock_Button" parent="ButtonsLayer" instance=ExtResource("9_yneek")]
+offset_left = 1768.0
+offset_top = 1717.0
+offset_right = 1968.0
+offset_bottom = 1917.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Rotate_Left" type="TextureButton" parent="ButtonsLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -631.0
+offset_top = 1170.0
+offset_right = -396.0
+offset_bottom = 1387.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_2uloq")
+texture_pressed = ExtResource("11_ppdn7")
+texture_hover = ExtResource("11_ppdn7")
+
+[node name="Rotate_Right" type="TextureButton" parent="ButtonsLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.0
+offset_top = 1170.0
+offset_right = -169.0
+offset_bottom = 1388.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("12_hu6l6")
+texture_pressed = ExtResource("13_g2nwl")
+texture_hover = ExtResource("13_g2nwl")
+
+[node name="H_Flip_Button" type="Button" parent="ButtonsLayer"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1080.0
+offset_top = 1740.0
+offset_right = 1180.0
+offset_bottom = 1840.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_kfkqr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sstgf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xmywp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hl45u")
+
+[node name="V_Flip_Button" type="Button" parent="ButtonsLayer"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1195.0
+offset_top = 1740.0
+offset_right = 1295.0
+offset_bottom = 1840.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_kfkqr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5m8va")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ficlp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qbnwh")
+
+[node name="ThePizzaTruckInterior01" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 945)
+texture = ExtResource("14_og2xr")
+metadata/_edit_lock_ = true
+
+[node name="Skybox" type="TextureRect" parent="."]
+z_index = -5
+offset_left = 75.0
+offset_top = -119.0
+offset_right = 1895.0
+offset_bottom = 905.0
+texture = ExtResource("15_hko51")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="The_Pizza" parent="." instance=ExtResource("16_iue2d")]
+position = Vector2(1467, 1629)
+
+[node name="ParfaitBowl-Front" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(1467, 1629)
+scale = Vector2(1.3, 1)
+texture = ExtResource("30_p3drd")
+
+[node name="PizzaToppings" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 4
+
+[node name="Food Container Holder" type="Node" parent="."]
+
+[node name="Cherry_Container" parent="Food Container Holder" instance=ExtResource("36_8ejy7")]
+position = Vector2(917, 1050)
+food_scene = ExtResource("26_by0uo")
+
+[node name="Banana_Container" parent="Food Container Holder" instance=ExtResource("18_fm843")]
+position = Vector2(660, 1038)
+food_scene = ExtResource("19_dhmyv")
+
+[node name="Peach_Container" parent="Food Container Holder" instance=ExtResource("27_hko51")]
+position = Vector2(408, 1046)
+food_scene = ExtResource("20_b1xnm")
+
+[node name="Pineapple_Container" parent="Food Container Holder" instance=ExtResource("20_hl45u")]
+position = Vector2(154, 1045)
+
+[node name="Orange_Container" parent="Food Container Holder" instance=ExtResource("31_by20n")]
+position = Vector2(775, 1282)
+food_scene = ExtResource("32_dgli7")
+
+[node name="Kiwi_Container" parent="Food Container Holder" instance=ExtResource("33_v36pm")]
+position = Vector2(958, 1408)
+food_scene = ExtResource("34_7ha7t")
+
+[node name="Apple_Container" parent="Food Container Holder" instance=ExtResource("27_d7rnl")]
+position = Vector2(363, 1295)
+food_scene = ExtResource("28_8bn78")
+
+[node name="Melon_Container" parent="Food Container Holder" instance=ExtResource("20_ll7rw")]
+position = Vector2(120, 1401)
+food_scene = ExtResource("24_hxpry")
+
+[node name="Strawberry_Container" parent="Food Container Holder" instance=ExtResource("29_gsxa8")]
+position = Vector2(578, 1428)
+food_scene = ExtResource("30_tthxk")
+
+[node name="Vanilla_Icecream_Container" parent="Food Container Holder" instance=ExtResource("46_yneek")]
+position = Vector2(943, 1749)
+food_scene = ExtResource("47_2uloq")
+food_type = "Vanilla Ice Cream"
+
+[node name="Chocolate_Icecream_Container" parent="Food Container Holder" instance=ExtResource("37_g2nwl")]
+position = Vector2(692, 1755)
+food_scene = ExtResource("38_og2xr")
+food_type = "Chocolate Ice Cream"
+
+[node name="Strawberry_Icecream_Container" parent="Food Container Holder" instance=ExtResource("39_t8fl1")]
+position = Vector2(443, 1746)
+food_scene = ExtResource("40_sf6q6")
+food_type = "Strawberry Ice Cream"
+
+[node name="Customer_Container" type="Node" parent="."]
+
+[node name="Bubble" parent="Customer_Container" instance=ExtResource("29_a1ur3")]
+z_index = -2
+offset_left = -135.0
+offset_top = -25.0
+offset_right = -135.0
+offset_bottom = -25.0
+label_font = ExtResource("6_dgli7")
+
+[node name="Customer" parent="Customer_Container" instance=ExtResource("30_nhs8c")]
+z_index = -3
+position = Vector2(1466, 523)
+
+[node name="Decorations Container" type="Node" parent="."]
+
+[node name="Trash" parent="Decorations Container" instance=ExtResource("31_i1ljb")]
+position = Vector2(154, 1677)
+
+[node name="Bell" parent="Decorations Container" instance=ExtResource("32_2dle6")]
+z_index = 1
+position = Vector2(1751, 766)
+
+[node name="Register" parent="Decorations Container" instance=ExtResource("33_8xjel")]
+unique_name_in_owner = true
+position = Vector2(176, 730)
+
+[node name="Timer" parent="Decorations Container" instance=ExtResource("34_2qvgs")]
+position = Vector2(1730, 119)
+
+[node name="Receipt01" type="Sprite2D" parent="Decorations Container"]
+position = Vector2(545, 102)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("35_onj08")
+
+[node name="Receipt02" type="Sprite2D" parent="Decorations Container"]
+position = Vector2(650, 100)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("35_onj08")
+
+[node name="Shop_Sign" type="Sprite2D" parent="Decorations Container"]
+position = Vector2(253, 246)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("42_v36pm")
+
+[node name="SFX_Container" type="Node" parent="."]
+
+[node name="beep_sound" type="AudioStreamPlayer2D" parent="SFX_Container"]
+stream = ExtResource("37_ephly")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="next_sound" type="AudioStreamPlayer2D" parent="SFX_Container"]
+stream = ExtResource("38_i5cyj")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="back_sound" type="AudioStreamPlayer2D" parent="SFX_Container"]
+stream = ExtResource("39_kcwxu")
+volume_db = 24.0
+bus = &"SFX"
+
+[connection signal="pressed" from="UI_Layer/MarginContainer/Up_Button" to="UI_Layer" method="_on_up_button_pressed"]
+[connection signal="pressed" from="UI_Layer/MarginContainer/Down_Button" to="UI_Layer" method="_on_down_button_pressed"]
+[connection signal="pressed" from="ButtonsLayer/Close_Button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="ButtonsLayer/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="ButtonsLayer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ButtonsLayer/HomeButton_FreePlay" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="ButtonsLayer/ResetButton_FreePlay" to="." method="_on_reset_button_free_play_pressed"]
+[connection signal="pressed" from="ButtonsLayer/Rotate_Left" to="." method="on_rotate_left_pressed"]
+[connection signal="pressed" from="ButtonsLayer/Rotate_Right" to="." method="on_rotate_right_pressed"]
+[connection signal="pressed" from="ButtonsLayer/H_Flip_Button" to="." method="on_flip_horizontal_pressed"]
+[connection signal="pressed" from="ButtonsLayer/V_Flip_Button" to="." method="on_flip_vertical_pressed"]

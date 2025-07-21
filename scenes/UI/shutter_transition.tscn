@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -100,14 +100,17 @@ script = ExtResource("1_b81s6")
 libraries = {
 &"": SubResource("AnimationLibrary_6k21d")
 }
+autoplay = "RESET"
 
 [node name="Shutter_Door" type="TextureRect" parent="."]
 z_index = 100
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.029
+offset_bottom = -0.320068
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1e-05)
 texture = ExtResource("2_b81s6")
 
 [node name="ShutterSound" type="AudioStreamPlayer2D" parent="."]

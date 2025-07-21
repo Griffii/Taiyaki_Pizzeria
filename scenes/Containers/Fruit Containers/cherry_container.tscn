@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7gc3726l3b6l"]
+
+[ext_resource type="Script" uid="uid://ba3lmgovat22k" path="res://scripts/foodcontainer.gd" id="1_gm8sm"]
+[ext_resource type="PackedScene" uid="uid://ch0p0tlt16aiu" path="res://scenes/Ingredients/Vegetables/cabbage.tscn" id="2_t352l"]
+[ext_resource type="Texture2D" uid="uid://diegfgbrfdeve" path="res://assets/images/items/Shadow.png" id="3_8smbt"]
+[ext_resource type="Texture2D" uid="uid://bf3r5jn33vn2d" path="res://assets/images/items/Food Container 01.png" id="4_0u75y"]
+[ext_resource type="Texture2D" uid="uid://b4t6t0o2ggh8c" path="res://assets/images/ingredients/Cherry.png" id="5_gm8sm"]
+[ext_resource type="Texture2D" uid="uid://dnn30o3uf3shn" path="res://assets/images/items/Food Container 01 - Front.png" id="6_tl3vw"]
+[ext_resource type="FontFile" uid="uid://b4fx0ke8w7yc5" path="res://assets/fonts/friendlyscribbles.ttf" id="7_0ay1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osvtn"]
+size = Vector2(230, 252)
+
+[node name="Cherry_Container" type="Node2D"]
+script = ExtResource("1_gm8sm")
+food_scene = ExtResource("2_t352l")
+food_type = "Cherry"
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 78)
+scale = Vector2(0.560465, 0.594828)
+texture = ExtResource("3_8smbt")
+
+[node name="Container_Back" type="Sprite2D" parent="."]
+texture = ExtResource("4_0u75y")
+
+[node name="Ingredients" type="Node2D" parent="."]
+
+[node name="Cherry" type="Sprite2D" parent="Ingredients"]
+position = Vector2(0, -75)
+rotation = 0.829287
+texture = ExtResource("5_gm8sm")
+
+[node name="Cherry2" type="Sprite2D" parent="Ingredients"]
+position = Vector2(39, -84)
+rotation = -0.326254
+texture = ExtResource("5_gm8sm")
+
+[node name="Cherry3" type="Sprite2D" parent="Ingredients"]
+position = Vector2(20, -112)
+rotation = 0.0729558
+texture = ExtResource("5_gm8sm")
+
+[node name="Cherry4" type="Sprite2D" parent="Ingredients"]
+position = Vector2(-60, -77)
+rotation = -0.506524
+texture = ExtResource("5_gm8sm")
+
+[node name="Cherry5" type="Sprite2D" parent="Ingredients"]
+position = Vector2(76, -56)
+rotation = 0.490416
+texture = ExtResource("5_gm8sm")
+
+[node name="Container_Front" type="Sprite2D" parent="."]
+texture = ExtResource("6_tl3vw")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = -15.0
+offset_right = 73.0
+offset_bottom = 62.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_0ay1g")
+theme_override_font_sizes/font_size = 28
+text = "Cherries"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -45)
+shape = SubResource("RectangleShape2D_osvtn")

@@ -1,7 +1,9 @@
 extends Node
 
-# Determines wether user is in free play mode or not
+
+var pizza_mode = true
 var free_play = false
+var hard_mode = false
 
 # Stores the data for the currently selected ingredient sprite
 var current_selection : Node2D
@@ -9,18 +11,18 @@ var current_selection : Node2D
 # Toggles when bell is rang - triggers counting of the toppings
 var pizza_ready : bool = false
 
-# Stores the toppings on the pizza here when the bell is rang
-var pizza_toppings : Array
-
 # Stores the order of the current customer as a String
 var current_order : String
 var desired_toppings : Array
 
+# Stores the toppings on the pizza here when the bell is rang
+var pizza_toppings : Array
 # Stores the compared results of the desired versus actual pizza toppings
 var pizza_check_results : Array
 
-# Store time limit for current game in seconds
+# Store time limit for current game in seconds and how many toppings can be ordered per ingredient
 var game_time: int
+var max_toppings_allowed: int = 10
 
 #Store a running total of the current cash as a float
 var current_cash: float
@@ -29,32 +31,69 @@ var current_cash: float
 ## Generates a random pizza order #############################################
 ###############################################################################
 func generate_pizza_order():
-	var all_ingredients = [
+	var all_ingredients = []
+	
+	var all_pizza_toppings = [
 		"cabbage", "carrot", "corn", "cucumber", "green pepper",
 		"mushroom", "onion", "pepperoni", "potato", "tomato", "pineapple"
 	]
 	
+	var all_parfait_toppings = [
+		"pineapple", "peach", "melon", "banana", "apple", "cherry", 
+		"strawberry", "orange", "kiwi fruit"
+	]
+	
+	if FoodTruck.pizza_mode:
+		all_ingredients = all_pizza_toppings
+	else:
+		all_ingredients = all_parfait_toppings
+	
 	var order_parts: Array = []
 	var new_toppings: Array = []
 	
-	# Randomly decide if cheese is included
-	var has_cheese = randi() % 2 == 0
-	if has_cheese:
-		order_parts.append("cheese")
-		new_toppings.append({ "name": "cheese", "count": 1 })
+	# Add cheese for pizzas, ice cream for parfaits
+	if FoodTruck.pizza_mode:
+		# Add cheese randomly
+		var has_cheese = randi() % 2 == 0
+		if has_cheese:
+			order_parts.append("cheese")
+			new_toppings.append({ "name": "cheese", "count": 99 })
+	else:
+		# Randomly determine which ice cream types are requested (1–3 total, repeats not allowed)
+		var ice_cream_types = ["vanilla ice cream", "chocolate ice cream", "strawberry ice cream"]
+		var selected_flavors = []
 		
+		for flavor in ice_cream_types:
+			if randi() % 2 == 0:
+				selected_flavors.append(flavor)
+		
+		# Ensure at least one flavor is selected
+		if selected_flavors.is_empty():
+			selected_flavors.append(ice_cream_types[randi() % ice_cream_types.size()])
+		
+		for flavor in selected_flavors:
+			order_parts.append(flavor)
+			new_toppings.append({ "name": flavor, "count": 99 })
+	
 	# Shuffle and pick a few toppings (1–4 random types)
 	all_ingredients.shuffle()
 	var num_toppings = randi() % 4 + 1
 	
 	for i in range(num_toppings):
 		var ingredient = all_ingredients[i]
-		var count = randi() % 10 + 1 # 11-20 is to annoying, will adda  ahrd setting later
+		# Set the count based off of the max_toppings_allowed setting
+		var count = randi() % max_toppings_allowed + 1 
 		new_toppings.append({ "name": ingredient, "count": count })
 		order_parts.append(num_to_words(count) + " " + pluralize(ingredient, count))
-		
+	
 	# Join the order string nicely
-	var order_string = "Can I get a pizza with "
+	var order_string: String
+	
+	if FoodTruck.pizza_mode:
+		order_string = "Can I get a pizza with "
+	else:
+		order_string = "Can I get a parfait with "
+	
 	order_string += join_ingredients(order_parts) + "?"
 	
 	# Save to global state
@@ -68,11 +107,19 @@ func pluralize(word: String, count: int) -> String:
 	else:
 		if word.ends_with("s"):
 			return word  # already plural, like "pepperonis"
+		# Veggie exceptions
 		if word == "corn":
 			return word # Don't pluralize corn
 		if word == "tomato":
 			return word + "es"
 		if word == "potato":
+			return word + "es"
+		# Fruit exceptions
+		if word == "strawberry":
+			return "strawberries"
+		if word == "cherry":
+			return "cherries"
+		if word == "peach":
 			return word + "es"
 		return word + "s"
 

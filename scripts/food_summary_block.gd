@@ -5,7 +5,8 @@ extends Control
 
 @onready var shutter_menu = $"../../../../../.."
 
-var toppings_01 = {
+var all_toppings = {
+	# Veggies
 	"cabbage": preload("res://assets/images/ingredients/Cabbage.png"),
 	"carrot": preload("res://assets/images/ingredients/Carrot.png"),
 	"cheese": preload("res://assets/images/ingredients/Cheese.png"),
@@ -15,14 +16,29 @@ var toppings_01 = {
 	"mushroom": preload("res://assets/images/ingredients/Mushroom.png"),
 	"onion": preload("res://assets/images/ingredients/Onion.png"),
 	"pepperoni": preload("res://assets/images/ingredients/Pepperoni.png"),
-	"pineapple": preload("res://assets/images/ingredients/Pineapple.png"),
 	"potato": preload("res://assets/images/ingredients/Potato.png"),
-	"tomato": preload("res://assets/images/ingredients/Tomato.png")
+	"tomato": preload("res://assets/images/ingredients/Tomato.png"),
+	# Fruit
+	"apple": preload("res://assets/images/ingredients/Apple.png"),
+	"banana": preload("res://assets/images/ingredients/Banana.png"),
+	"cherry": preload("res://assets/images/ingredients/Cherry.png"),
+	"kiwi fruit": preload("res://assets/images/ingredients/Kiwi.png"),
+	"melon": preload("res://assets/images/ingredients/Melon.png"),
+	"orange": preload("res://assets/images/ingredients/Orange.png"),
+	"peach": preload("res://assets/images/ingredients/Peach.png"),
+	"pineapple": preload("res://assets/images/ingredients/Pineapple.png"),
+	"strawberry": preload("res://assets/images/ingredients/Strawberry2.png"),
+	# Ice Cream
+	"vanilla ice cream": preload("res://assets/images/ingredients/Vanilla Icecream.png"),
+	"chocolate ice cream": preload("res://assets/images/ingredients/Chocolate Icecream.png"),
+	"strawberry ice cream": preload("res://assets/images/ingredients/Strawberry Icecream.png")
 }
+
+
 
 func set_icon_and_amount(food: String, food_desired: bool, x: int, number_desired: bool):
 	# Set texture
-	topping_icon.texture = toppings_01.get(food, null)
+	topping_icon.texture = all_toppings.get(food, null)
 	# Set the number label
 	amount.text = str(x)
 	

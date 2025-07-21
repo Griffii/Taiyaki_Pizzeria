@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu8u1le8kxalf"]
+
+[ext_resource type="Texture2D" uid="uid://dwdvvp4dduqml" path="res://assets/images/ingredients/Strawberry.png" id="1_d8py7"]
+[ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_s4slp"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="3_t3ld7"]
+
+[node name="Strawberry" type="Sprite2D" groups=["ingredients"]]
+texture = ExtResource("1_d8py7")
+script = ExtResource("2_s4slp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -171.0
+offset_right = -38.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(67, 69)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+rotation = -3.14159
+polygon = PackedVector2Array(-0.5, 72, -16.5, 68, -48.5, 31, -66.5, -13, -64.5, -37, -40.5, -60, -9.5, -67, 27.5, -64, 52.5, -47, 61.5, -31, 62.5, -8, 53.5, 18, 35.5, 45, 16.5, 66)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_t3ld7")
+volume_db = 5.0

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu6365d0oc1h4"]
+
+[ext_resource type="Texture2D" uid="uid://svnhob5dfl1c" path="res://assets/images/ingredients/Chocolate Icecream.png" id="1_s84f7"]
+[ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_8patn"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="3_77lrr"]
+
+[node name="Chocolate Icecream" type="Sprite2D" groups=["ingredients"]]
+texture = ExtResource("1_s84f7")
+script = ExtResource("2_8patn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -228.0
+offset_right = -23.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-0.999995, 11.8182)
+polygon = PackedVector2Array(-93, 14.1818, -98, -21.8182, -87, -60.8182, -58, -91.8182, -24, -108.818, 12, -109.818, 51, -95.8182, 81, -69.8182, 95, -33.8182, 96, -3.8182, 94, 9.1818, 104, 23.1818, 105, 38.1818, 94, 53.1818, 80, 55.1818, 70, 65.1818, 58, 68.1818, 42, 64.1818, 18, 75.1818, -2.00001, 74.1818, -15, 64.1818, -32, 70.1818, -49, 69.1818, -63, 57.1818, -89, 55.1818, -104, 41.1818, -102, 26.1818)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_77lrr")
+volume_db = 5.0

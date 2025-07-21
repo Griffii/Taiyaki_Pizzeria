@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dbg1mo66colwg" path="res://assets/images/ingredients/Pineapple.png" id="2_ho2gh"]
 [ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="3_orkvu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho2gh"]
-size = Vector2(159, 153)
+[sub_resource type="CircleShape2D" id="CircleShape2D_orkvu"]
+radius = 78.6695
 
 [node name="Pineapple" type="Sprite2D" groups=["ingredients"]]
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_ho2gh")
 script = ExtResource("2_44gqu")
 
@@ -19,9 +20,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -180.0
-offset_top = -182.0
+offset_top = -184.0
 offset_right = -22.0
-offset_bottom = -29.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -29,7 +30,7 @@ grow_vertical = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, -3.5)
-shape = SubResource("RectangleShape2D_ho2gh")
+shape = SubResource("CircleShape2D_orkvu")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_orkvu")

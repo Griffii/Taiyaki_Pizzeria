@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://q4aytoy1csws"]
+
+[ext_resource type="Texture2D" uid="uid://b1npx2oysenxy" path="res://assets/images/ingredients/Strawberry Icecream.png" id="1_d083r"]
+[ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_dorpa"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="3_6oh0f"]
+
+[node name="Strawberry Icecream" type="Sprite2D" groups=["ingredients"]]
+texture = ExtResource("1_d083r")
+script = ExtResource("2_dorpa")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -224.0
+offset_right = -25.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-0.999995, 11.8182)
+polygon = PackedVector2Array(-90, 13.1818, -95, -22.8182, -84, -58.8182, -54, -90.8182, -21, -107.818, 17, -107.818, 49, -93.8182, 74, -69.8182, 89, -40.8182, 93, -11.8182, 89, 9.1818, 100, 23.1818, 104, 34.1818, 99, 47.1818, 87, 54.1818, 75, 53.1818, 68, 62.1818, 55, 66.1818, 42, 64.1818, 18, 75.1818, 3.99999, 72.1818, -15, 64.1818, -32, 70.1818, -49, 67.1818, -63, 57.1818, -82, 59.1818, -95, 51.1818, -103, 34.1818, -98, 20.1818)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6oh0f")
+volume_db = 5.0

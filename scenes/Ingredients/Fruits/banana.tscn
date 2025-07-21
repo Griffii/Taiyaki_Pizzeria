@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cipbkh12j32p5"]
+
+[ext_resource type="Texture2D" uid="uid://bbkqpvb606u6g" path="res://assets/images/ingredients/Banana.png" id="1_f4phg"]
+[ext_resource type="Script" uid="uid://bic22fgb5rgdk" path="res://scripts/ingredient.gd" id="2_3wkg6"]
+[ext_resource type="AudioStream" uid="uid://dx8iyrkne2m2b" path="res://assets/sfx/Minimalist7.mp3" id="3_6go3t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wkg6"]
+radius = 86.3496
+
+[node name="Banana" type="Sprite2D" groups=["ingredients"]]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_f4phg")
+script = ExtResource("2_3wkg6")
+
+[node name="Control" type="Control" parent="." groups=["ingredients"]]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -188.0
+offset_right = -15.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+shape = SubResource("CircleShape2D_3wkg6")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6go3t")
+volume_db = 5.0

@@ -5,13 +5,14 @@ extends Control
 @onready var bubble = $Bubble_Rect
 @onready var anim_player = $AnimationPlayer
 
+@onready var register = %Register
 var HoverLabelScene = preload("res://scenes/UI/hover_label.tscn")
 
 var MAX_FONT_SIZE = 64
 var MIN_FONT_SIZE = 32
 var FONT_STEP = 4
-var BUBBLE_SIZE = Vector2(950, 400)
-var VERTICAL_PADDING = 20
+var BUBBLE_SIZE = Vector2(840, 400)
+var VERTICAL_PADDING = 0
 
 func display_order(toppings: Array) -> void:
 	await get_tree().create_timer(0.5).timeout
@@ -39,7 +40,13 @@ func display_order(toppings: Array) -> void:
 
 func generate_labels(toppings: Array, font_size: int):
 	# Intro text
-	var words = ["Can", "I", "get", "a", "pizza", "with"]
+	var words = []
+	
+	if FoodTruck.pizza_mode:
+		words = ["Can", "I", "get", "a", "pizza", "with"]
+	else:
+		words = ["Can", "I", "get", "a", "parfait", "with"]
+	
 	for word in words:
 		add_word_label(word, font_size)
 	
@@ -54,16 +61,19 @@ func generate_labels(toppings: Array, font_size: int):
 			add_word_label("and", font_size)
 		elif i > 0:
 			add_word_label(",", font_size)
-			
+		
+		# Don't add numbers or plurals for cheese and ice cream
 		if topping_name == "cheese":
 			add_hover_label("cheese", font_size)
+		elif topping_name.contains("ice cream"):
+			add_hover_label(topping_name, font_size)
 		else:
 			var number_word = FoodTruck.num_to_words(count)
 			var plural_name = FoodTruck.pluralize(topping_name, count)
 			
 			add_hover_label(number_word, font_size)
 			add_hover_label(plural_name, font_size)
-			
+	
 	add_word_label("?", font_size)
 
 func add_word_label(text: String, font_size: int) -> void:
@@ -77,6 +87,7 @@ func add_word_label(text: String, font_size: int) -> void:
 func add_hover_label(text: String, font_size: int) -> void:
 	var hover_label = HoverLabelScene.instantiate()
 	set_hover_label(hover_label, text, font_size)
+	hover_label.on_tip_revealed.connect(register.tip_revealed)
 	order_container.add_child(hover_label)
 
 func set_hover_label(label: Label, text: String, font_size: int):
